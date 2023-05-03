@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculo de tiro vertical y tiro oblicuo</title>
+    <link rel="stylesheet" href="principal.css" type="text/css">
 </head>
 <body>
   <header>
@@ -12,7 +13,14 @@
   <div class="columna1">
     <h3 id="tipoTiro">Que tipo de tiro desea calcular?</h3>
   </div>
-  <div>
+
+  <!-- Esta columna contiene los botones que redirigen a las paginas de tiro oblicuo o vertical-->
+  <div class="columna2">
+    <label class="my-1 mr-2" for="input_tiro">Seleccione su opcion</label>
+    <select class="form-control" id="input_tiro">
+      <option>Tiro oblicuo</option>
+      <option>Tiro vertical</option>
+    </select>
 
   </div>
 </section>
