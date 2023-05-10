@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="tiroVertical.css">
+    <link rel="icon" type="image/png" href="images/icono.png"/>
     <title>Tiro Vertical</title>
 </head>
 <body>
@@ -28,12 +29,13 @@
             <input type="text" class="data2" name="distance" id="distancia" placeholder="Ingrese la unidad:">
             <label for="tiempo">Tiempo:</label>
             <input type="text" class="data2" name="time" id="tiempo" placeholder="Ingrese la unidad:">
-            <input type="submit" class="boton2" value="Enviar">
+            <label for="button2">Enviar Información:</label>
+            <input type="submit" class="boton2" id="button2" value="Enviar">
         </form>
     </div>
 
     <div class="imagen">
-        <img id="imagenTiroVertical" src="image/imagen1.png" alt="Imagen de Tiro Vertical">
+        <img id="imagenTiroVertical" src="images/imagen1.png" alt="Imagen de Tiro Vertical">
     </div>
 
     <div class="resultados2">
@@ -42,6 +44,15 @@
             Llega hasta "Distancia" "Unidad", en un tiempo de "Tiempo" "Unidad".
         </p>
     </div>
+
+    <div class="back2">
+        <button onclick="location.href='index.html'">BACK TO MENU</button>
+    </div>
+
+    <canvas>
+
+    </canvas>
+
     <div class="burbles">
         <div class="burbuja"></div>
         <div class="burbuja"></div>

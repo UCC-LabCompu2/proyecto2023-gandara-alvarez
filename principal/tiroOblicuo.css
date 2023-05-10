@@ -60,7 +60,6 @@ div{
     padding: 12px;
     color: white;
     font-size: 16px;
-    margin-top: 0px;
 }
 
 .resultados1{
@@ -73,6 +72,11 @@ div{
     font-family: "Arial Narrow";
     color: white;
     box-shadow: 7px 13px 37px #000;
+}
+
+.back1 {
+    margin-left: 1230px;
+    margin-top: -610px;
 }
 
 #imagenTiroOblicuo{

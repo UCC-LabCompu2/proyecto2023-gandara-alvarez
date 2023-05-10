@@ -1,29 +1,30 @@
-div{
+div {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.pag2{
+.pag2 {
     width: 100%;
     height: 100vh;
     background: linear-gradient(to right, #0165a6, #4b57de, #010133);
     position: relative;
     overflow: hidden;
 }
-.pag2 h1{
-    font-size:50px;
+
+.pag2 h1 {
+    font-size: 50px;
     margin-left: 20px;
     font-family: 'Fondamento', cursive;
 }
 
-.pag2 h3{
-    font-size:30px;
+.pag2 h3 {
+    font-size: 30px;
     text-align: center;
     font-family: 'Syne Mono', monospace;
 }
 
-.datos2{
+.datos2 {
     width: 300px;
     background: #24303c;
     padding: 18px;
@@ -36,13 +37,15 @@ div{
     box-shadow: 7px 13px 37px #000;
     font-size: 14px;
 }
-.datos2 h4{
+
+.datos2 h4 {
     font-size: 30px;
     margin-bottom: 10px;
     margin-top: -8px;
     text-align: center;
 }
-.data2{
+
+.data2 {
     width: 80%;
     background: #24303c;
     padding: 10px;
@@ -53,17 +56,17 @@ div{
     font-size: 13px;
     color: white;
 }
-.datos2 .boton2{
+
+.datos2 .boton2 {
     width: 90%;
     background: #1f53c5;
     border: none;
     padding: 12px;
     color: white;
     font-size: 16px;
-    margin-top: 0px;
 }
 
-.resultados2{
+.resultados2 {
     width: 200px;
     background: #234d70;
     padding: 15px;
@@ -75,14 +78,19 @@ div{
     box-shadow: 7px 13px 37px #000;
 }
 
-#imagenTiroVertical{
+#imagenTiroVertical {
     margin-left: 450px;
     width: 400px;
     margin-top: -400px;
     margin-bottom: 200px;
 }
 
-.burbuja{
+.back2 {
+    margin-left: 1230px;
+    margin-top: -610px;
+}
+
+.burbuja {
     border-radius: 50%;
     background: #fff;
     opacity: .3;
@@ -91,70 +99,79 @@ div{
     animation: burbujas 3s linear infinite;
 }
 
-.burbuja:nth-child(1){
+.burbuja:nth-child(1) {
     width: 80px;
     height: 80px;
     left: 5%;
     animation-duration: 3s;
     animation-delay: 3s;
 }
-.burbuja:nth-child(2){
+
+.burbuja:nth-child(2) {
     width: 100px;
     height: 100px;
     left: 35%;
     animation-duration: 3s;
     animation-delay: 5s;
 }
-.burbuja:nth-child(3){
+
+.burbuja:nth-child(3) {
     width: 20px;
     height: 20px;
     left: 15%;
     animation-duration: 1.5s;
     animation-delay: 7s;
 }
-.burbuja:nth-child(4){
+
+.burbuja:nth-child(4) {
     width: 50px;
     height: 50px;
     left: 90%;
     animation-duration: 6s;
     animation-delay: 3s;
 }
-.burbuja:nth-child(5){
+
+.burbuja:nth-child(5) {
     width: 70px;
     height: 70px;
     left: 65%;
     animation-duration: 3s;
     animation-delay: 1s;
 }
-.burbuja:nth-child(6){
+
+.burbuja:nth-child(6) {
     width: 20px;
     height: 20px;
     left: 50%;
     animation-duration: 4s;
     animation-delay: 5s;
 }
-.burbuja:nth-child(7){
+
+.burbuja:nth-child(7) {
     width: 20px;
     height: 20px;
     left: 50%;
     animation-duration: 4s;
     animation-delay: 5s;
 }
-.burbuja:nth-child(8){
+
+.burbuja:nth-child(8) {
     width: 100px;
     height: 100px;
     left: 52%;
     animation-duration: 5s;
     animation-delay: 5s;
 }
-.burbuja:nth-child(9){
+
+.burbuja:nth-child(9) {
     width: 65px;
     height: 65px;
     left: 51%;
     animation-duration: 3s;
     animation-delay: 2s;
 }
-.burbuja:nth-child(10){
+
+.burbuja:nth-child(10) {
     width: 40px;
     height: 40px;
     left: 35%;
@@ -163,17 +180,17 @@ div{
 }
 
 @keyframes burbujas {
-    0%{
+    0% {
         bottom: 0;
         opacity: 0;
     }
-    30%{
+    30% {
         transform: translateX(30px);
     }
-    50%{
+    50% {
         opacity: .4;
     }
-    100%{
+    100% {
         bottom: 100vh;
         opacity: 0;
     }

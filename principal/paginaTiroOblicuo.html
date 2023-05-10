@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="tiroOblicuo.css">
+    <link rel="icon" type="image/png" href="images/icono.png"/>
     <title>Tiro Oblicuo</title>
 </head>
 <body>
@@ -28,12 +29,13 @@
             <input type="text" class="data1" name="distance" id="distancia" placeholder="Ingrese la unidad:">
             <label for="tiempo">Tiempo:</label>
             <input type="text" class="data1" name="time" id="tiempo" placeholder="Ingrese la unidad:">
-            <input type="submit" class="boton1" value="Enviar">
+            <label for="button1">Enviar Información:</label>
+            <input type="submit" class="boton1" id="button1" value="Enviar">
         </form>
     </div>
 
     <div class="imagen">
-        <img id="imagenTiroOblicuo" src="imagenes/imagen1.png" alt="Imagen de Tiro Oblicuo">
+        <img id="imagenTiroOblicuo" src="images/imagen1.png" alt="Imagen de Tiro Oblicuo">
     </div>
 
     <div class="resultados1">
@@ -42,6 +44,15 @@
             Llega hasta "Distancia" "Unidad", en un tiempo de "Tiempo" "Unidad".
         </p>
     </div>
+
+    <div class="back1">
+        <button onclick="location.href='index.html'">BACK TO MENU</button>
+    </div>
+
+    <canvas>
+
+    </canvas>
+
     <div class="burbles">
         <div class="burbuja"></div>
         <div class="burbuja"></div>
