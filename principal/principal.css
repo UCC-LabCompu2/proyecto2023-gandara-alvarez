@@ -1,0 +1,38 @@
+div {
+    margin: auto;
+    background-color: bisque;
+}
+body {
+    background-color: bisque;
+}
+
+.tirooblicuo{
+    background-color: mediumblue;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+}
+.tirovertical{
+    background-color: mediumblue;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+}
+
+.tituloPrincipal h1{
+    text-align: center;
+}
+
+.columna1 {
+    text-align: center;
+}
+
+.columna2{
+    text-align: center;
+}
+
+.fondo{
+    margin-bottom: 100px;
+}
+
+
