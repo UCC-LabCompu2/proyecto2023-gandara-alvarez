@@ -4,26 +4,26 @@ div{
     box-sizing: border-box;
 }
 
-.pag1{
+.pag2{
     width: 100%;
     height: 100vh;
     background: linear-gradient(to right, #0165a6, #4b57de, #010133);
     position: relative;
     overflow: hidden;
 }
-.pag1 h1{
+.pag2 h1{
     font-size:50px;
     margin-left: 20px;
     font-family: 'Fondamento', cursive;
 }
 
-.pag1 h3{
+.pag2 h3{
     font-size:30px;
     text-align: center;
     font-family: 'Syne Mono', monospace;
 }
 
-.datos1{
+.datos2{
     width: 300px;
     background: #24303c;
     padding: 18px;
@@ -36,13 +36,13 @@ div{
     box-shadow: 7px 13px 37px #000;
     font-size: 14px;
 }
-.datos1 h4{
+.datos2 h4{
     font-size: 30px;
     margin-bottom: 10px;
     margin-top: -8px;
     text-align: center;
 }
-.data1{
+.data2{
     width: 80%;
     background: #24303c;
     padding: 10px;
@@ -53,7 +53,7 @@ div{
     font-size: 13px;
     color: white;
 }
-.datos1 .boton1{
+.datos2 .boton2{
     width: 90%;
     background: #1f53c5;
     border: none;
@@ -63,7 +63,7 @@ div{
     margin-top: 0px;
 }
 
-.resultados1{
+.resultados2{
     width: 200px;
     background: #234d70;
     padding: 15px;
@@ -75,7 +75,7 @@ div{
     box-shadow: 7px 13px 37px #000;
 }
 
-#imagenTiroOblicuo{
+#imagenTiroVertical{
     margin-left: 450px;
     width: 400px;
     margin-top: -400px;
