@@ -12,5 +12,6 @@ Las tres páginas se encuentran conectadas, es decir, puede navegar tranquilamen
 
 Tecnologías utilizadas: 
 
-Computadoras Notebook media-alta gama
+HTML y CSS para la primera parte, utilizaremos JavaScript para las animaciones de los graficos correspondientes a los
+respectivos tiros
  
