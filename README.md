@@ -19,6 +19,6 @@ La página consta de 3 partes, las tres páginas se encuentran conectadas, es de
 HTML y CSS para la primera parte, utilizaremos JavaScript para las animaciones de los graficos correspondientes a los
 respectivos tiros
 
-### link de paginas
+### Link de paginas
 
-Para ingresar a la pagina, haga click en el siguiente link: (principal/incex.html)
+Si quiere ver el proyecto, aqui tiene la [pagina principal](principal/index.html) 
