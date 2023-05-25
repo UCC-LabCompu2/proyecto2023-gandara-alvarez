@@ -1,17 +1,24 @@
 # PROYECTO 2023 - ALVAREZ-GANDARA
 
-Autores: Alvarez Aguirre Julián - Gandara Yago
+## Autores: Alvarez Aguirre Julián - Gandara Yago
 
-Link páginas:
+### Contenido
+La página consta de 3 partes, las tres páginas se encuentran conectadas, es decir, puede navegar tranquilamente de una página a otra mediante botones de retroseso o de seleccion (Tiro Vertical o Tiro Oblicuo).
 
-La página consta de 3 partes:
-La primer parte es su página inicial, donde tiene información en base a Tiro Oblicuo y Tiro Vertical y el usuario debe escoger cuál desea utilizar.
-Parte 2: Página de Tiro Oblicuo, esta página, le solicita al usuario un ingreso de datos para el cálculo de su distancia y tiempo del tiro.
-Parte 3: Página de Tiro Vertical, esta página, le solicita al usuario un ingreso de datos para el cálculo de su distancia y tiempo del tiro.
-Las tres páginas se encuentran conectadas, es decir, puede navegar tranquilamente de una página a otra mediante botones de retroseso o de seleccion (Tiro Vertical o Tiro Oblicuo).
 
-Tecnologías utilizadas: 
+1) **PAGINA INCIAL:** Información en base a Tiro Oblicuo y Tiro Vertical (el usuario debe escoger cuál desea utilizar).
+
+
+2) **Tiro Oblicuo:** Se le solicita al usuario un ingreso de datos para el cálculo de distancia y tiempo del tiro oblicuo.
+
+
+3) **Tiro Vertical:** Se le solicita al usuario un ingreso de datos para el cálculo de su distancia y tiempo del tiro vertical.
+
+### Tecnologías utilizadas
 
 HTML y CSS para la primera parte, utilizaremos JavaScript para las animaciones de los graficos correspondientes a los
 respectivos tiros
- 
+
+### link de paginas
+
+Para ingresar a la pagina, haga click en el siguiente link: (principal/incex.html)
