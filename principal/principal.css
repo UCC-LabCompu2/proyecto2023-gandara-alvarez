@@ -1,10 +1,16 @@
 div {
     margin: auto;
-    background-color: bisque;
+
 }
 
 body {
-    background-color: bisque;
+    width: 100%;
+    height: 100vh;
+    color: #fff;
+    background: linear-gradient(45deg, #b02552, #561d56, #156515,black);
+    background-size: 400% 400%;
+    position: relative;
+    animation: cambiar 10s ease-in-out infinite;
 }
 
 .tirooblicuo {
@@ -31,10 +37,18 @@ body {
 
 .tituloPrincipal h1 {
     text-align: center;
+    font-size:80px;
+    font-family: 'Fondamento', cursive;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .columna1 {
     text-align: center;
+}
+
+.columna1 h3{
+    font-family: 'Oswald', cursive;
 }
 
 .columna2 {
@@ -42,7 +56,34 @@ body {
 }
 
 .fondo {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
+    margin-top: -20px;
 }
 
+.fondo .infoAdicional{
+    color: black;
+}
 
+#imagenPagPrincTO {
+    width: 600px;
+    margin-left: 60px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+#imagenPagPrincTV {
+    width: 500px;
+    margin-left: 60px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+.fondoPantalla {
+
+}
+
+@keyframes cambiar{
+    0%{background-position: 0 50%;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0 50%;}
+}
