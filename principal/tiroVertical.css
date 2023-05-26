@@ -32,7 +32,7 @@ div {
     margin-left: 1000px;
     margin-top: -110px;
     border-radius: 5px;
-    font-family: "Arial Narrow";
+    font-family: "Arial Narrow", cursive;
     color: white;
     box-shadow: 7px 13px 37px #000;
     font-size: 14px;
@@ -52,7 +52,7 @@ div {
     border-radius: 4px;
     margin-bottom: 8px;
     border: 1px solid #1f53c5;
-    font-family: Cambria;
+    font-family: Cambria, cursive;
     font-size: 13px;
     color: white;
 }
@@ -73,7 +73,7 @@ div {
     margin-top: -200px;
     margin-left: 20px;
     border-radius: 4px;
-    font-family: "Arial Narrow";
+    font-family: "Arial Narrow", cursive;
     color: white;
     box-shadow: 7px 13px 37px #000;
 }
