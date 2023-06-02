@@ -12,22 +12,31 @@
  * ejes principales
  */
 
+let alturaMaxima
+let velocidadFinal
+let tiempo
+
 let calculoFuncion = () => {
     let altura = document.getElementById("altura");
     let velocidad_inicial = document.getElementById("velocidad");
     let gravedad = document.getElementById("gravedad")
 
-    let tiempo = (velocidad_inicial * (-1) )/gravedad
-    let calculo_Velocidad_final = velocidad_inicial + (gravedad * tiempo)
+    tiempo = (velocidad_inicial * (-1) )/gravedad
+    velocidadFinal = velocidad_inicial + (gravedad * tiempo)
 
     if (velocidad_inicial = 0) {
-        let altura_maxima = altura;
+        alturaMaxima = altura;
     }
     else {
-        let altura_maxima = (velocidad_inicial^2)/(2 * gravedad)
+        alturaMaxima = (velocidad_inicial^2)/(2 * gravedad)
     }
+}
 
+let mostrarResultados = () =>{
+    const canvas = document.getElementById("resultados")
+    const ctx = canvas.getContext("2d")
 
+    document.write("Llega hasta" + alturaMaxima + " en un tiempo de: "+ tiempo)
 }
 
 let dibujarCuadriculado = () => {
