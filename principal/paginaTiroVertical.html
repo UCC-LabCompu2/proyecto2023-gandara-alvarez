@@ -23,25 +23,19 @@
     <div class="datos2">
         <h4>Ingrese los datos</h4>
         <form>
-            <label for="altura">Altura:</label>
-            <input type="number" class="data2" name="height" id="altura" min="0" max="100">
-            <label for="velocidad">Velocidad:</label>
-            <input type="number" class="data2" name="velocity" id="velocidad" min="0" max="100">
-            <label for="peso">Peso:</label>
-            <input type="number" class="data2" name="weight" id="peso" min="0" max="500">
+            <label for="altura">Altura Inicial(m):</label>
+            <input type="number" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:">
+            <label for="velocidad">Velocidad Inicial(m/s):</label>
+            <input type="number" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:">
             <label for="gravedad">Gravedad:</label>
-            <input type="number" class="data2" name="gravity" id="gravedad" min="0" max="100">
-            <label for="distancia">Distancia:</label>
-            <input type="text" class="data2" name="distance" id="distancia" placeholder="Ingrese la unidad:">
-            <label for="tiempo">Tiempo:</label>
-            <input type="text" class="data2" name="time" id="tiempo" placeholder="Ingrese la unidad:">
+            <input type="number" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:">
             <label for="button2">Enviar Información:</label>
-            <input type="submit" class="boton2" id="button2" value="Enviar">
+            <input type="submit" class="boton2" id="button2" value="CALCULAR">
         </form>
     </div>
 
     <div class="imagen">
-        <img id="imagenTiroVertical" src="images/imagen1.png" alt="Imagen de Tiro Vertical">
+     <!--   <img id="imagenTiroVertical" src="images/imagen1.png" alt="Imagen de Tiro Vertical"> -->
     </div>
 
     <div class="resultados2">
