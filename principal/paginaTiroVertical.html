@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Roboto&family=Syne+Mono&display=swap" rel="stylesheet">
     <meta content="link de uso, importa las letras exyraídas de Google Fonts" name="keyword">
-    <script  type="text/javascript" src="JavaScript/tiroVertical.js"></script>
+    <script  type="text/javascript" src="/proyecto2023-gandara-alvarez/JavaScript/tiroVertical.js"></script>
 
 
 </head>
@@ -39,13 +39,14 @@
             <label for="tiempo">Tiempo:</label>
             <input type="text" class="data2" name="time" id="tiempo" placeholder="Ingrese la unidad:">
             <label for="button2">Enviar Información:</label>
-            <input type="submit" class="boton2" id="button2" value="Enviar">
+            <button onclick="dibujarCuadriculado()" type="button" class="boton2" id="button2">Enviar</button>
         </form>
     </div>
 
-    <div class="imagen">
-        <img id="imagenTiroVertical" src="images/imagen1.png" alt="Imagen de Tiro Vertical">
-    </div>
+
+    <canvas id="myCanvas" class="ejer">
+        Tu navegador no soporta el tag de HTML5 canvas.
+    </canvas>
 
     <div class="resultados2">
         <h5>Resultados:</h5>
@@ -57,10 +58,6 @@
     <div class="back2">
         <button onclick="location.href='index.html'">BACK TO MENU</button>
     </div>
-
-    <canvas>
-
-    </canvas>
 
     <div class="burbles">
         <div class="burbuja"></div>

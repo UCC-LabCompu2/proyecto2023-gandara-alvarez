@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Roboto&family=Syne+Mono&display=swap" rel="stylesheet">
     <meta content="link de uso, importa las letras exyraídas de Google Fonts" name="keyword">
+    <script  type="text/javascript" src="/proyecto2023-gandara-alvarez/JavaScript/tiroOblicuo.js"></script>
+
 </head>
 <body>
 
@@ -38,13 +40,13 @@
             <label for="tiempo">Tiempo:</label>
             <input type="text" class="data1" name="time" id="tiempo" placeholder="Ingrese la unidad:">
             <label for="button1">Enviar Información:</label>
-            <input type="submit" class="boton1" id="button1" value="Enviar">
+            <button onclick="dibujarCuadriculado()" type="button" class="boton1" id="button1">Enviar</button>
         </form>
     </div>
 
-    <div class="imagen">
-        <img id="imagenTiroOblicuo" src="images/imagen1.png" alt="Imagen de Tiro Oblicuo">
-    </div>
+    <canvas id="myCanvas" class="ejer">
+        Tu navegador no soporta el tag de HTML5 canvas.
+    </canvas>
 
     <div class="resultados1">
         <h5>Resultados:</h5>
