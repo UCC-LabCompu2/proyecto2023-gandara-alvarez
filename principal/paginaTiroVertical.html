@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Roboto&family=Syne+Mono&display=swap" rel="stylesheet">
     <meta content="link de uso, importa las letras exyraídas de Google Fonts" name="keyword">
-    <script  type="text/javascript" src="JavaScript/tiroVertical.js"></script>
+    <script  type="text/javascript" src="/proyecto2023-gandara-alvarez/JavaScript/tiroVertical.js"></script>
 
 
 </head>
@@ -33,13 +33,13 @@
             <label for="gravedad">Gravedad:</label>
             <input type="number" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:">
             <label for="button2">Enviar Información:</label>
-            <input type="submit" class="boton2" id="button2" value="CALCULAR">
+            <button onclick="dibujarCuadriculado(), calculoFuncion()" type="button" class="boton2" id="button2" value="CALCULAR">Calcular</button>
         </form>
     </div>
 
-    <div class="imagen">
-     <!--   <img id="imagenTiroVertical" src="images/imagen1.png" alt="Imagen de Tiro Vertical"> -->
-    </div>
+        <canvas id="myCanvas" class="ejer" >
+            Tu navegador no soporta el tag de HTML5 canvas.
+        </canvas>
 
     <div class="resultados2">
         <h5>Resultados:</h5>
