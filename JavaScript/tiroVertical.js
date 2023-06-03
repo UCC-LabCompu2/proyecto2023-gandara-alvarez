@@ -12,86 +12,141 @@
  * ejes principales
  */
 
-let alturaMaxima
-let velocidadFinal
-let tiempo
+var alturaMaxima
+var velocidadFinal
+var tiempo
 
 let calculoFuncion = () => {
-    let altura = document.getElementById("altura");
-    let velocidad_inicial = document.getElementById("velocidad");
-    let gravedad = document.getElementById("gravedad");
-    tiempo = (velocidad_inicial * (-1) )/gravedad
-    velocidadFinal = velocidad_inicial + (gravedad * tiempo)
+    let altura, velocidad_inicial, gravedad;
+     altura = document.getElementById("altura").value;
+     velocidad_inicial = document.getElementById("velocidad").value;
+     gravedad = document.getElementById("gravedad").value;
+    tiempo = (velocidad_inicial * (-1) )/gravedad;
+    velocidadFinal = velocidad_inicial + (gravedad * tiempo);
 
-    if (velocidad_inicial = 0) {
+    if (velocidad_inicial == 0) {
         alturaMaxima = altura;
     }
     else {
-        alturaMaxima = (velocidad_inicial^2)/(2 * gravedad)
+        alturaMaxima = (velocidad_inicial^2)/(2 * gravedad);
     }
 
-    console.log(alturaMaxima, tiempo)
-    mostrarResultados(alturaMaxima, tiempo)
+    console.log(alturaMaxima, tiempo);
+    graficar(altura, alturaMaxima);
+    mostrarResultados(alturaMaxima, tiempo);
+}
+
+let graficar = (m, b) =>{
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+
+    let d = 20;
+    m = Number(m);
+    b = Number(b);
+
+    dibujarCuadriculado();
+
+    context.beginPath();
+    let Y = m
+
+    let interval = setInterval(function () {
+        let posY = canvas.width / 2 + Y * d;
+        let x = (m * Y + b);
+        let posX = canvas.height / 2 - x * d;
+
+        context.lineTo(posY, posX);
+        context.strokeStyle = "#FF0000";
+        context.lineWidth = 1.5;
+        context.stroke();
+
+        Y++;
+
+        if (Y > 20) {
+            clearInterval(interval);
+        }
+    }, 10)
+
+    context.closePath();
 }
 
 let mostrarResultados = (altura, tiempo) =>{
-    const canvas = document.getElementById("resultados");
-    const ctx = canvas.getContext("2d");
-    document.write("Llega hasta: " + altura + " metros en un tiempo de: "+ tiempo)
+    document.getElementById("distancia").innerHTML = altura;
+    document.getElementById("tiempo").innerHTML = tiempo;
 }
 
-let dibujarCuadriculado = () => {
-    const canvas = document.getElementById("myCanvas");
-    const ctx = canvas.getContext("2d");
-    const alturaMaxima = canvas.height;
-    const anchoMax = canvas.width
-    const paso = 20;
-    let ejeX = -24;
-    let ejeY = -14;
+function dibujarCuadriculado() {
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    context.fillStyle = 'white';
+    let d = 20;
+    let h = 15;
+    context.fillRect(0,0,d , h);
 
 
-    //Lineas Verticales
-    for (let i=paso; i<anchoMax; i+=paso) {
-        ctx.beginPath();
-        ctx.moveTo(i, 0)
-        ctx.lineTo(i, alturaMaxima);
-        ctx.strokeStyle = "green";
-        ctx.stroke();
-        ctx.font="10px Arial";
-        ctx.fillStyle="blue";
-        ctx.fillText(ejeX, i, alturaMaxima/2)
-        ctx.closePath();
-        ejeX++;
-    }
+    canvas.width = canvas.width;
 
     //Lineas Horizontales
-    for (let i = paso; i<alturaMaxima; i += paso){
-        ctx.beginPath();
-        ctx.moveTo(0, i)
-        ctx.lineTo(anchoMax, i);
-        ctx.strokeStyle = "green";
-        ctx.stroke();
-        ctx.font="10px Arial";
-        ctx.fillStyle="blue";
-        ctx.fillText(ejeY, anchoMax/2, i)
-        ctx.closePath();
-        ejeY++;
+    for (let i = d; i < canvas.height; i += d) {
+        context.beginPath();
+        context.moveTo(0, i);
+        context.lineTo(canvas.width, i);
+        context.lineWidth = 0.5;
+        context.stroke();
+        context.closePath();
+    }
+
+    //Lineas Verticales
+    for (let i = d; i < canvas.width; i += d) {
+        context.beginPath();
+        context.moveTo(i, 0);
+        context.lineTo(i, canvas.height);
+        context.lineWidth = 0.5;
+        context.stroke();
+        context.closePath();
     }
 
     //Eje X
-    ctx.beginPath();
-    ctx.moveTo(0, alturaMaxima/2)
-    ctx.lineTo(anchoMax, alturaMaxima/2);
-    ctx.strokeStyle = "#6b0a0a";
-    ctx.stroke();
-    ctx.closePath();
+    context.beginPath();
+    context.moveTo(0, canvas.height / 2);
+    context.lineTo(canvas.width, canvas.height / 2);
+    context.lineWidth = 1;
+    context.strokeStyle = "#000000";
+    context.stroke();
+    context.closePath();
 
-    //EJE Y
-    ctx.beginPath();
-    ctx.moveTo(anchoMax/2, 0)
-    ctx.lineTo(anchoMax/2, alturaMaxima);
-    ctx.strokeStyle = "#6b0a0a";
-    ctx.stroke();
-    ctx.closePath();
+    //Eje Y
+    context.beginPath();
+    context.moveTo(canvas.width / 2, 0);
+    context.lineTo(canvas.width / 2, canvas.height);
+    context.lineWidth = 1;
+    context.strokeStyle = "#000000";
+    context.stroke();
+    context.closePath();
+
+    //Numeros Eje X
+    for (let i = d; i < canvas.width; i += d) {
+        let num = (-canvas.width / 2 + i) / d;
+        context.font = "10px Arial";
+
+        if (num % 2 === 0 && num !== 0) {
+            context.fillText(num, i, canvas.height / 2 + h);
+        }
+    }
+
+    //Numeros Eje Y
+    for (let i = d; i < canvas.height; i += d) {
+        let num = (canvas.height / 2 - i) / d;
+        context.font = "10px Arial";
+
+        if (num % 2 === 0 && num !== 0) {
+            context.fillText(num, canvas.width / 2 - h, i);
+        }
+    }
+
+    //Nombre Ejes
+    context.font = "15px Arial Bolder";
+    context.fillText("X", canvas.width - h, canvas.height / 2 - h);
+    context.fillText("Y", canvas.width / 2 + h, h);
+
 }
 

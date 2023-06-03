@@ -17,49 +17,51 @@
 
 
 </head>
-<body>
+<body onload="dibujarCuadriculado()">
 
-<header class="pag2">
-    <h1 id="tituloPrincipal">FISICA EN TUS MANOS</h1>
-    <h3 id="subtitle">Usted eligio Tiro Vertical!</h3>
-
-    <div class="datos2">
-        <h4>Ingrese los datos</h4>
-        <form>
-            <label for="altura">Altura Inicial(m):</label>
-            <input type="number" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:">
-            <label for="velocidad">Velocidad Inicial(m/s):</label>
-            <input type="number" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:">
-            <label for="gravedad">Gravedad:</label>
-            <input type="number" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:">
-            <label for="button2">Enviar Información:</label>
-            <button onclick="calculoFuncion()" type="button" class="boton2" id="button2" value="CALCULAR">Calcular</button>
-        </form>
-    </div>
+    <header class="pag2">
+        <h1 id="tituloPrincipal">FISICA EN TUS MANOS</h1>
+        <h3 id="subtitle">Usted eligio Tiro Vertical!</h3>
+    <div id="containerGraficoTirovertical">
+        <div class="datos2">
+            <h4>Ingrese los datos</h4>
+            <form>
+                <label for="altura">Altura Inicial(m):</label>
+                <input type="text" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:">
+                <label for="velocidad">Velocidad Inicial(m/s):</label>
+                <input type="text" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:">
+                <label for="gravedad">Gravedad:</label>
+                <input type="text" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:">
+                <label for="button2">Enviar Información:</label>
+                <input type="submit" onclick="calculoFuncion()" class="boton1" id="button2" value="CALCULAR">
+            </form>
+        </div>
 
         <canvas id="myCanvas" class="ejer" >
             Tu navegador no soporta el tag de HTML5 canvas.
         </canvas>
 
+        <div class="resultados2">
+            <h5>Resultados:</h5>
+            <form class="resultados3">
+                <div>
+                    Llega hasta:
+                    <span id="distancia"> 0 </span>
+                </div>
+                <div>
+                    En un tiempo de:
+                    <span id="tiempo">0</span>
+                </div>
 
-    <canvas id="resultados" class="resultadosTiroVertical">
-        Tu navegador no soporta el tag de HTML5 canvas
-    </canvas>
-
-    <div class="resultados2">
-        <h5>Resultados:</h5>
-        <p>
-            Llega hasta  "Unidad", en un tiempo de "Tiempo" "Unidad".
-        </p>
+            </form>
+        </div>
     </div>
+
+
 
     <div class="back2">
         <button onclick="location.href='index.html'">BACK TO MENU</button>
     </div>
-
-    <canvas>
-
-    </canvas>
 
     <div class="burbles">
         <div class="burbuja"></div>
