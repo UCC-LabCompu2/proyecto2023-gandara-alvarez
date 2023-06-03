@@ -12,23 +12,23 @@
  * ejes principales
  */
 
-var alturaMaxima
-var velocidadFinal
-var tiempo
+var alturaMaxima;
+var velocidadFinal;
+var tiempo;
 
 let calculoFuncion = () => {
     let altura, velocidad_inicial, gravedad;
-     altura = document.getElementById("altura").value;
-     velocidad_inicial = document.getElementById("velocidad").value;
-     gravedad = document.getElementById("gravedad").value;
-    tiempo = (velocidad_inicial * (-1) )/gravedad;
-    velocidadFinal = velocidad_inicial + (gravedad * tiempo);
+    altura = document.getElementById("altura").value;
+    velocidad_inicial = document.getElementById("velocidad").value;
+    gravedad = document.getElementById("gravedad").value;
+    tiempo = velocidad_inicial/gravedad;
+    velocidadFinal = Number(velocidad_inicial) + Number(gravedad * tiempo);
 
     if (velocidad_inicial == 0) {
         alturaMaxima = altura;
     }
     else {
-        alturaMaxima = (velocidad_inicial^2)/(2 * gravedad);
+        alturaMaxima = Number(altura) + Number((Math.pow(velocidad_inicial,2))/(2 * gravedad));
     }
 
     console.log(alturaMaxima, tiempo);
@@ -69,8 +69,8 @@ let graficar = (m, b) =>{
     context.closePath();
 }
 
-let mostrarResultados = (altura, tiempo) =>{
-    document.getElementById("distancia").innerHTML = altura;
+let mostrarResultados = (alturaMaxima, tiempo) =>{
+    document.getElementById("distancia").innerHTML = alturaMaxima;
     document.getElementById("tiempo").innerHTML = tiempo;
 }
 
