@@ -19,8 +19,7 @@ let tiempo
 let calculoFuncion = () => {
     let altura = document.getElementById("altura");
     let velocidad_inicial = document.getElementById("velocidad");
-    let gravedad = document.getElementById("gravedad")
-
+    let gravedad = document.getElementById("gravedad");
     tiempo = (velocidad_inicial * (-1) )/gravedad
     velocidadFinal = velocidad_inicial + (gravedad * tiempo)
 
@@ -30,13 +29,15 @@ let calculoFuncion = () => {
     else {
         alturaMaxima = (velocidad_inicial^2)/(2 * gravedad)
     }
+
+    console.log(alturaMaxima, tiempo)
+    mostrarResultados(alturaMaxima, tiempo)
 }
 
-let mostrarResultados = () =>{
-    const canvas = document.getElementById("resultados")
-    const ctx = canvas.getContext("2d")
-
-    document.write("Llega hasta" + alturaMaxima + " en un tiempo de: "+ tiempo)
+let mostrarResultados = (altura, tiempo) =>{
+    const canvas = document.getElementById("resultados");
+    const ctx = canvas.getContext("2d");
+    document.write("Llega hasta: " + altura + " metros en un tiempo de: "+ tiempo)
 }
 
 let dibujarCuadriculado = () => {
@@ -92,6 +93,5 @@ let dibujarCuadriculado = () => {
     ctx.strokeStyle = "#6b0a0a";
     ctx.stroke();
     ctx.closePath();
-
 }
 
