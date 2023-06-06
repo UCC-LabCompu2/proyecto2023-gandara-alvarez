@@ -66,8 +66,8 @@ function graficarTiroVertical() {
 
         ctx.lineTo(x, y);
 
-        if (y >= canvasHeight || y <= 0) {
-            break; // Terminar el bucle si el objeto toca el suelo o el techo del canvas
+        if (y <= 0) {
+            break; // Terminar el bucle si el objeto toca el suelo (y = 0)
         }
 
         t += 0.1;
@@ -81,5 +81,6 @@ function mostrarResultados(alturaMaxima, tiempo) {
     document.getElementById("distancia").textContent = alturaMaxima.toFixed(2);
     document.getElementById("tiempo").textContent = tiempo.toFixed(2);
 }
+
 
 
