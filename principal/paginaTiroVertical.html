@@ -16,7 +16,7 @@
     <script  type="text/javascript" src="/proyecto2023-gandara-alvarez/JavaScript/tiroVertical.js"></script>
 </head>
 
-<body onload="dibujarCuadriculado()">
+<body onload="graficarTiroVertical()">
 
     <header class="pag2">
         <h1 id="tituloPrincipal">FISICA EN TUS MANOS</h1>
@@ -26,17 +26,17 @@
             <h4>Ingrese los datos</h4>
             <form>
                 <label for="altura">Altura Inicial(m):</label>
-                <input type="text" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:">
+                <input type="text" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:" step="0.1">
                 <label for="velocidad">Velocidad Inicial(m/s):</label>
-                <input type="text" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:">
+                <input type="text" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:" step="0.1">
                 <label for="gravedad">Gravedad:</label>
-                <input type="text" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:">
+                <input type="text" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:" step="0.1">
                 <label for="button2">Enviar Información:</label>
-                <button type="button" onclick="calculoFuncion()" class="boton1" id="button2">Calcular </button>
+                <button type="button" onclick="graficarTiroVertical()" class="boton1" id="button2">Calcular </button>
             </form>
         </div>
 
-        <canvas id="myCanvas" class="ejer" >
+        <canvas id="myCanvas" width="200" height="200" class="ejer" >
             Tu navegador no soporta el tag de HTML5 canvas.
         </canvas>
 

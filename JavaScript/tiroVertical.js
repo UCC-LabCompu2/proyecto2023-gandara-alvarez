@@ -12,141 +12,74 @@
  * ejes principales
  */
 
-var alturaMaxima;
-var velocidadFinal;
-var tiempo;
 
-let calculoFuncion = () => {
-    let altura, velocidad_inicial, gravedad;
-    altura = document.getElementById("altura").value;
-    velocidad_inicial = document.getElementById("velocidad").value;
-    gravedad = document.getElementById("gravedad").value;
-    tiempo = velocidad_inicial/gravedad;
-    velocidadFinal = Number(velocidad_inicial) + Number(gravedad * tiempo);
+function graficarTiroVertical() {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
 
-    if (velocidad_inicial == 0) {
-        alturaMaxima = altura;
-    }
-    else {
-        alturaMaxima = Number(altura) + Number((Math.pow(velocidad_inicial,2))/(2 * gravedad));
-    }
+    // Obtener los valores de los parámetros ingresados por el usuario
+    const alturaInicial = Number(document.getElementById("altura").value);
+    const gravedad = Number(document.getElementById("gravedad").value);
 
-    console.log(alturaMaxima, tiempo);
-    graficar(altura, alturaMaxima);
-    mostrarResultados(alturaMaxima, tiempo);
-}
+    // Constantes
+    const escalaX = 10; // Factor de escala para la posición horizontal
+    const escalaY = 10; // Factor de escala para la posición vertical
 
-let graficar = (m, b) =>{
-    let canvas = document.getElementById("myCanvas");
-    let context = canvas.getContext("2d");
+    // Cálculos
+    const velocidadInicial = Math.sqrt(2 * gravedad * alturaInicial); // Calcular la velocidad inicial
+    const tiempoTotal = (2 * velocidadInicial) / gravedad; // Tiempo total de vuelo
+    const alturaMaxima = alturaInicial + Math.pow(velocidadInicial, 2) / (2 * gravedad); // Altura máxima alcanzada
 
-    let d = 20;
-    m = Number(m);
-    b = Number(b);
+    // Configuración del lienzo
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "red";
 
-    dibujarCuadriculado();
+    // Dibujar ejes
+    const origenX = canvasWidth / 2;
+    const origenY = canvasHeight / 2;
 
-    context.beginPath();
-    let Y = m
+    // Eje x
+    ctx.beginPath();
+    ctx.moveTo(0, origenY);
+    ctx.lineTo(canvasWidth, origenY);
+    ctx.stroke();
 
-    let interval = setInterval(function () {
-        let posY = canvas.width / 2 + Y * d;
-        let x = (m * Y + b);
-        let posX = canvas.height / 2 - x * d;
+    // Eje y
+    ctx.beginPath();
+    ctx.moveTo(origenX, 0);
+    ctx.lineTo(origenX, canvasHeight);
+    ctx.stroke();
 
-        context.lineTo(posY, posX);
-        context.strokeStyle = "#FF0000";
-        context.lineWidth = 1.5;
-        context.stroke();
+    // Dibujar trayectoria
+    ctx.beginPath();
+    ctx.moveTo(origenX, origenY - alturaInicial * escalaY);
 
-        Y++;
+    let t = 0;
+    let x, y;
 
-        if (Y > 20) {
-            clearInterval(interval);
+    while (true) {
+        x = origenX + t * escalaX; // Posición horizontal
+        y = origenY - (alturaInicial * escalaY + (velocidadInicial * t - 0.5 * gravedad * Math.pow(t, 2)) * escalaY); // Posición vertical
+
+        ctx.lineTo(x, y);
+
+        if (y >= canvasHeight || y <= 0) {
+            break; // Terminar el bucle si el objeto toca el suelo o el techo del canvas
         }
-    }, 10)
 
-    context.closePath();
+        t += 0.1;
+    }
+
+    ctx.stroke();
+    mostrarResultados(alturaMaxima, tiempoTotal);
 }
 
-let mostrarResultados = (alturaMaxima, tiempo) =>{
-    document.getElementById("distancia").innerHTML = alturaMaxima;
-    document.getElementById("tiempo").innerHTML = tiempo;
+function mostrarResultados(alturaMaxima, tiempo) {
+    document.getElementById("distancia").textContent = alturaMaxima.toFixed(2);
+    document.getElementById("tiempo").textContent = tiempo.toFixed(2);
 }
 
-function dibujarCuadriculado() {
-    let canvas = document.getElementById("myCanvas");
-    let context = canvas.getContext("2d");
-    context.fillStyle = 'white';
-    let d = 20;
-    let h = 15;
-    context.fillRect(0,0,d , h);
-
-
-    canvas.width = canvas.width;
-
-    //Lineas Horizontales
-    for (let i = d; i < canvas.height; i += d) {
-        context.beginPath();
-        context.moveTo(0, i);
-        context.lineTo(canvas.width, i);
-        context.lineWidth = 0.5;
-        context.stroke();
-        context.closePath();
-    }
-
-    //Lineas Verticales
-    for (let i = d; i < canvas.width; i += d) {
-        context.beginPath();
-        context.moveTo(i, 0);
-        context.lineTo(i, canvas.height);
-        context.lineWidth = 0.5;
-        context.stroke();
-        context.closePath();
-    }
-
-    //Eje X
-    context.beginPath();
-    context.moveTo(0, canvas.height / 2);
-    context.lineTo(canvas.width, canvas.height / 2);
-    context.lineWidth = 1;
-    context.strokeStyle = "#000000";
-    context.stroke();
-    context.closePath();
-
-    //Eje Y
-    context.beginPath();
-    context.moveTo(canvas.width / 2, 0);
-    context.lineTo(canvas.width / 2, canvas.height);
-    context.lineWidth = 1;
-    context.strokeStyle = "#000000";
-    context.stroke();
-    context.closePath();
-
-    //Numeros Eje X
-    for (let i = d; i < canvas.width; i += d) {
-        let num = (-canvas.width / 2 + i) / d;
-        context.font = "10px Arial";
-
-        if (num % 2 === 0 && num !== 0) {
-            context.fillText(num, i, canvas.height / 2 + h);
-        }
-    }
-
-    //Numeros Eje Y
-    for (let i = d; i < canvas.height; i += d) {
-        let num = (canvas.height / 2 - i) / d;
-        context.font = "10px Arial";
-
-        if (num % 2 === 0 && num !== 0) {
-            context.fillText(num, canvas.width / 2 - h, i);
-        }
-    }
-
-    //Nombre Ejes
-    context.font = "15px Arial Bolder";
-    context.fillText("X", canvas.width - h, canvas.height / 2 - h);
-    context.fillText("Y", canvas.width / 2 + h, h);
-
-}
 
