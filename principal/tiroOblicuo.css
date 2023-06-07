@@ -57,16 +57,27 @@ div{
     width: 90%;
     background: #1f53c5;
     border: none;
-    padding: 12px;
+    padding: 10px;
     color: white;
     font-size: 16px;
 }
 
-.resultados1{
+.datos1 .boton_borrar{
+    width: 90%;
+    background: #1f53c5;
+    border: black;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.result1 {
     width: 200px;
     background: #234d70;
     padding: 15px;
     margin-top: -200px;
+    margin-bottom: 200px;
     margin-left: 20px;
     border-radius: 4px;
     font-family: "Arial Narrow", cursive;
@@ -74,16 +85,35 @@ div{
     box-shadow: 7px 13px 37px #000;
 }
 
-.back1 {
-    margin-left: 1230px;
-    margin-top: -410px;
+.result1 h4{
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: -8px;
+    text-align: center;
 }
 
-#imagenTiroOblicuo{
+.back1 {
+    width: 1px;
+    height: 1px;
+    margin-left: 1230px;
+    margin-top: -420px;
+    margin-bottom: 200px;
+}
+
+#pelota{
+    margin-left: 450px;
+    width: 600px;
+    height: 600px;
+    margin-top: -200px;
+    margin-bottom: 200px;
+}
+
+.tOblicuo {
     margin-left: 450px;
     width: 400px;
-    margin-top: -400px;
+    margin-top: -200px;
     margin-bottom: 200px;
+    background-color: #ffff;
 }
 
 .burbuja{
