@@ -13,48 +13,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Roboto&family=Syne+Mono&display=swap" rel="stylesheet">
     <meta content="link de uso, importa las letras exyraídas de Google Fonts" name="keyword">
-    <script  type="text/javascript" src="JavaScript/tiroVertical.js"></script>
-
-
+    <script  type="text/javascript" src="/proyecto2023-gandara-alvarez/JavaScript/tiroVertical.js"></script>
 </head>
+
 <body>
 
-<header class="pag2">
-    <h1 id="tituloPrincipal">FISICA EN TUS MANOS</h1>
-    <h3 id="subtitle">Usted eligio Tiro Vertical!</h3>
+    <header class="pag2">
+        <h1 id="tituloPrincipal">FISICA EN TUS MANOS</h1>
+        <h3 id="subtitle">Usted eligio Tiro Vertical!</h3>
+    <div id="containerGraficoTirovertical">
+        <div class="datos2">
+            <h4>Ingrese los datos</h4>
+            <form name="unidades" id="unity">
+                <label for="altura">Altura Inicial(m):</label>
+                <input type="text" class="data2" name="height" id="altura" placeholder="Minimo de 0m y Máximo de 10m:" onchange="correct(this.id, this.value)" step="0.1">
+                <label for="velocidad">Velocidad Inicial(m/s):</label>
+                <input type="text" class="data2" name="velocity" id="velocidad"  placeholder="Máximo 50 m/s y Mínimo 0 m/s:" onchange="correct(this.id, this.value)" step="0.1">
+                <label for="gravedad">Gravedad:</label>
+                <input type="text" class="data2" name="gravity" id="gravedad"  placeholder="Minimo de 1 m/s^2 y Máximo de 20m/s^2:" onchange="correct(this.id, this.value)" step="0.1">
+                <label for="button2">Enviar Información:</label>
+                <button type="button" onclick="graficarTiroVertical()" class="boton1" id="button2">Calcular </button>
+            </form>
+        </div>
 
-    <div class="datos2">
-        <h4>Ingrese los datos</h4>
-        <form>
-            <label for="altura">Altura Inicial(m):</label>
-            <input type="number" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:">
-            <label for="velocidad">Velocidad Inicial(m/s):</label>
-            <input type="number" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:">
-            <label for="gravedad">Gravedad:</label>
-            <input type="number" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:">
-            <label for="button2">Enviar Información:</label>
-            <input type="submit" class="boton2" id="button2" value="CALCULAR">
-        </form>
+        <canvas id="myCanvas" width="200" height="200" class="ejer" >
+            Tu navegador no soporta el tag de HTML5 canvas.
+        </canvas>
+
+        <div class="resultados2">
+            <h5>Resultados:</h5>
+            <form class="resultados3">
+                <div>
+                    Llega hasta:
+                    <span id="distancia"> 0</span> <span> mts</span>
+                </div>
+                <div>
+                    En un tiempo de:
+                    <span id="tiempo">0 seg </span> <span> seg </span>
+                </div>
+
+            </form>
+        </div>
     </div>
 
-    <div class="imagen">
-     <!--   <img id="imagenTiroVertical" src="images/imagen1.png" alt="Imagen de Tiro Vertical"> -->
-    </div>
 
-    <div class="resultados2">
-        <h5>Resultados:</h5>
-        <p>
-            Llega hasta "Distancia" "Unidad", en un tiempo de "Tiempo" "Unidad".
-        </p>
-    </div>
 
     <div class="back2">
         <button onclick="location.href='index.html'">BACK TO MENU</button>
     </div>
-
-    <canvas>
-
-    </canvas>
 
     <div class="burbles">
         <div class="burbuja"></div>
@@ -68,7 +74,6 @@
         <div class="burbuja"></div>
         <div class="burbuja"></div>
     </div>
-
 </header>
 </body>
 </html>
