@@ -14,7 +14,7 @@ let correct = (id, valor) => {
     vel = document.getElementById("velocidad").value;
     grav = document.getElementById("gravedad").value;
     formulario = document.getElementById("unity");
-    if(isNaN(valor)){
+    if(isNaN(valor)){ //funcion que verifica si valor es un numero o no
         alert("Se ingreso un valor invalido en "+ id);
         formulario.reset(); //funcion que resetea el formulario si es que se ingreso un valor que no es un numero
 
@@ -27,13 +27,13 @@ let correct = (id, valor) => {
 
     }else if (id==="velocidad"){
         document.getElementById("velocidad").value = valor;
-        if (vel<0 || vel>100){
+        if (vel<0 || vel>50){
             alert("Velocidad mal ingresado, vuelva a ingresar");
             formulario.reset();
         }
     }else if (id==="gravedad"){
         document.getElementById("gravedad").value = valor;
-        if (grav<1 || grav>100){
+        if (grav<1 || grav>20){
             alert("Gravedad mal ingresado, vuelva a ingresar");
             formulario.reset();
         }
@@ -41,15 +41,8 @@ let correct = (id, valor) => {
 }
 
 /**
- * Genera las lineas verticales y horizontales para el cuadriculado del canvas
- * @method dibujarCuadriculado
- */
-
-/**
- * En base a los valores ingresados calcula los resultados a mostrar
- * @method calculate
- * @param {...} ... - ...
- * @param {...} ... - ...
+ * En base a los valores ingresados calcula los resultados a mostrar y grafica el canvas
+ * @method graficarTiroOblicuo
  */
 let graficarTiroOblicuo = () => {
     let canvas = document.getElementById("myCanvas");
@@ -58,23 +51,22 @@ let graficarTiroOblicuo = () => {
     const anchomax = canvas.width;
 
     //Obtener los valores de los inputs
-    let ang, vel, grav, angRad;
-    ang = parseFloat(document.getElementById("angulo").value);
-    vel = parseFloat(document.getElementById("velocidad").value);
-    grav = parseFloat(document.getElementById("gravedad").value);
+    const ang = Number(document.getElementById("angulo").value);
+    const vel = Number(document.getElementById("velocidad").value);
+    const grav = Number(document.getElementById("gravedad").value);
 
-    angRad = (ang * Math.PI) / 180; //pase de grados a radianes para utilizar correctamente las funciones Math
+    const angRad = (ang * Math.PI) / 180; //pase de grados a radianes para utilizar correctamente las funciones Math
     //constantes
     const escalaX = 10;
     const escalaY = 10;
 
     //calculos
     let time= Number((2*vel*Math.sin(angRad))/grav).toFixed(2); //TiempoVuelo
-    let ymax = Number(((Math.pow(vel,2))*Math.pow(Math.sin(angRad),2))/2*grav).toFixed(2); //AlturaMaxima
-    let xmax = Number((Math.pow(vel,2)*Math.sin(2*angRad))/grav).toFixed(2); //AlcanceMaximo
+    let ymax = Number(((Math.pow(vel,2))*Math.pow(Math.sin(angRad),2))/(2*grav)); //AlturaMaxima
+    let xmax = Number((Math.pow(vel,2)*Math.sin(2*angRad))/grav); //AlcanceMaximo
 
     //Canvas
-    ctx.clearRect(0,0,anchomax,alturaMax);
+    ctx.clearRect(0, 0, anchomax, alturaMax);
     ctx.lineWidth = 2;
     ctx.strokeStyle = "black";
 
@@ -87,6 +79,7 @@ let graficarTiroOblicuo = () => {
     ctx.moveTo(origenX,origenY);
     ctx.lineTo(anchomax,origenY);
     ctx.stroke();
+
     //EjeY
     ctx.beginPath();
     ctx.moveTo(origenX,0);
@@ -111,17 +104,15 @@ let graficarTiroOblicuo = () => {
     }
 
     ctx.stroke();
-/*
-    //Final Trayectoria
-    ctx.beginPath();
-    ctx.arc(xmax, alturaMax -(vel * Math.sin(angRad) * time - (0.5 * grav * Math.pow(time,2))),3,0,2 * Math.PI);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.stroke();
-*/
     showResult(ymax,time,xmax);
 }
-
+/**
+ * Se encarga de asignarle los valores calculados en la funcion graficarTiroOblicuo() al recuadro de los resultados
+ * @method showResult
+ * @param {number} altMax - altura maxima calculado en la funcion graficarTiroOblicuo()
+ * @param {number} tiempoVuelo - tiempo que transcurre entre la altura inicial y la altura maxima alcanzada, tiempo total de vuelo
+ * @param {number} alcMax - alcance maximo calculado en la funcion graficarTiroOblicuo()
+ */
 let showResult = (altMax,tiempoVuelo,alcMax) => {
     document.getElementById("altmax").textContent = altMax.toFixed(2);
     document.getElementById("tiempovuelo").textContent = tiempoVuelo.toFixed(2);

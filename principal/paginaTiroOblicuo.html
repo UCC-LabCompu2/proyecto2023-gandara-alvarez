@@ -27,12 +27,13 @@
             <h4>Ingrese los datos</h4>
             <form name="unidades" id="unity">
                 <label for="angulo">Ángulo(Grados):</label>
-                <input type="text" class="data1" name="angle" id="angulo" onchange="correct(this.id, this.value)" step="0.1">
+                <input type="text" class="data1" name="angle" id="angulo" placeholder="Máximo 360° y Mínimo 0°:" onchange="correct(this.id, this.value)" step="0.1">
                 <label for="velocidad">Velocidad Inicial(m/s):</label>
-                <input type="text" class="data1" name="velocity" id="velocidad" onchange="correct(this.id, this.value)" step="0.1">
+                <input type="text" class="data1" name="velocity" id="velocidad" placeholder="Máximo 50 m/s y Mínimo 0 m/s:" onchange="correct(this.id, this.value)" step="0.1">
                 <label for="gravedad">Gravedad(m/s^2):</label>
-                <input type="text" class="data1" name="gravity" id="gravedad" onchange="correct(this.id, this.value)" step="0.1">
-                <button class="boton1" id="button1" onclick="graficarTiroOblicuo()">CALCULAR</button>
+                <input type="text" class="data1" name="gravity" id="gravedad" placeholder="Minimo de 1 m/s^2 y Máximo de 20m/s^2:" onchange="correct(this.id, this.value)" step="0.1">
+                <label for="button1">Enviar Información:</label>
+                <button type="button" class="boton1" id="button1" onclick="graficarTiroOblicuo()">CALCULAR</button>
             </form>
         </div>
 

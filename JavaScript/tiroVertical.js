@@ -1,10 +1,4 @@
 /**
- * ...
- * @method ...
- * @param {...} ... - ...
- * @param {...} ... - ...
- */
-/**
  * Comprueba si los valores ingresados son correctos, sino salta un alert con el error y resetea los valores
  * @method correct
  * @param {string} id - Id del input del formulario
@@ -20,7 +14,7 @@ let correct = (id, valor) => {
     vel = document.getElementById("velocidad").value;
     grav = document.getElementById("gravedad").value;
     formulario = document.getElementById("unity");
-    if(isNaN(valor)){
+    if(isNaN(valor)){ //funcion que verifica si valor es un numero o no
         alert("Se ingreso un valor invalido en "+ id);
         formulario.reset(); //funcion que resetea el formulario si es que se ingreso un valor que no es un numero
 
@@ -43,15 +37,13 @@ let correct = (id, valor) => {
             formulario.reset();
         }
     }
-    calcular(altura,vel,grav);
 }
 
 /**
  * Se encarga de graficar en el canvas el tiro vertical calculando la altura maxima de vuelo y el tiempo que transcurre
  * para que llegue desde la altura incial a la altura maxima
- * @method correct
+ * @method graficarTiroVertical
  */
-
 function graficarTiroVertical() {
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
@@ -116,7 +108,7 @@ function graficarTiroVertical() {
 
 /**
  * Se encarga de asignarle los valores calculados en la funcion graficarTiroVertical() al recuadro de los resultados
- * @method correct
+ * @method mostrarResultados
  * @param {number} alturaMaxima - altura maxima calculada en la funcion graficarTiroVertical()
  * @param {number} tiempo - tiempo que transcurre entre la altura inicial y la altura maxima alcanzada, tiempo total de vuelo
  */
