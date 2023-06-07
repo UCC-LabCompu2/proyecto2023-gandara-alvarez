@@ -4,12 +4,11 @@
  * @param {...} ... - ...
  * @param {...} ... - ...
  */
-
 /**
- * ...
- * @method dibujarCuadrado
- * Funcion que se encarga de crear el canvas ya cuadriculado , con sus
- * ejes principales
+ * Comprueba si los valores ingresados son correctos, sino salta un alert con el error y resetea los valores
+ * @method correct
+ * @param {string} id - Id del input del formulario
+ * @param {number} valor - Valor ingresado por el usuario
  */
 let correct = (id, valor) => {
     if(valor.includes(",")){
@@ -27,13 +26,13 @@ let correct = (id, valor) => {
 
     }else if (id === "velocidad"){
         document.getElementById("velocidad").value = valor;
-        if (vel<0 || vel>=50){
+        if (vel<0 || vel>50){
             alert("Velocidad mal ingresado, vuelva a ingresar");
             formulario.reset();
         }
     }else if (id==="gravedad"){
         document.getElementById("gravedad").value = valor;
-        if (grav<1 || grav>=20){
+        if (grav<1 || grav>20){
             alert("Gravedad mal ingresado, vuelva a ingresar");
             formulario.reset();
         }
@@ -46,6 +45,12 @@ let correct = (id, valor) => {
     }
     calcular(altura,vel,grav);
 }
+
+/**
+ * Se encarga de graficar en el canvas el tiro vertical calculando la altura maxima de vuelo y el tiempo que transcurre
+ * para que llegue desde la altura incial a la altura maxima
+ * @method correct
+ */
 
 function graficarTiroVertical() {
     const canvas = document.getElementById("myCanvas");
@@ -106,9 +111,15 @@ function graficarTiroVertical() {
     }
 
     ctx.stroke();
-    mostrarResultados(alturaMaxima, t);
+    mostrarResultados(alturaMaxima, tiempoTotal);
 }
 
+/**
+ * Se encarga de asignarle los valores calculados en la funcion graficarTiroVertical() al recuadro de los resultados
+ * @method correct
+ * @param {number} alturaMaxima - altura maxima calculada en la funcion graficarTiroVertical()
+ * @param {number} tiempo - tiempo que transcurre entre la altura inicial y la altura maxima alcanzada, tiempo total de vuelo
+ */
 function mostrarResultados(alturaMaxima, tiempo) {
     document.getElementById("distancia").textContent = alturaMaxima.toFixed(2);
     document.getElementById("tiempo").textContent = tiempo.toFixed(2);
