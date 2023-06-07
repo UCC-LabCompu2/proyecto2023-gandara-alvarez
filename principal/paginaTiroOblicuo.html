@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Roboto&family=Syne+Mono&display=swap" rel="stylesheet">
     <meta content="link de uso, importa las letras exyraídas de Google Fonts" name="keyword">
-    <script type="text/javascript" src="tiroOblicuo.js"></script>
+    <script type="text/javascript" src="/proyecto2023-gandara-alvarez/JavaScript/tiroOblicuo.js"></script>
 </head>
 <body onload="cuadriculado()">
 
@@ -21,66 +21,59 @@
     <h1 id="tituloPrincipal">FISICA EN TUS MANOS</h1>
     <h3 id="subtitle">Usted eligio Tiro Oblicuo!</h3>
 
-    <div class="datos1">
-        <h4>Ingrese los datos</h4>
-        <form name="unidades" id="unity">
-            <label for="angulo">Ángulo(Grados):</label>
-            <input type="text" class="data1" name="angle" id="angulo" onchange="correct(this.id, this.value)">
-            <label for="velocidad">Velocidad Inicial(m/s):</label>
-            <input type="text" class="data1" name="velocity" id="velocidad" onchange="correct(this.id, this.value)">
-            <label for="gravedad">Gravedad(m/s^2):</label>
-            <input type="text" class="data1" name="gravity" id="gravedad" onchange="correct(this.id, this.value)">
-            <button class="boton1" id="button1" onclick="calculate()">
-                CALCULAR
-            </button>
-            <button class="boton_borrar" id="button_clear" onclick="restaurate()">
-                RESTABLECER
-            </button>
-        </form>
+    <div id="containerGraficoTiroOblicuo">
+
+        <div class="datos1">
+            <h4>Ingrese los datos</h4>
+            <form name="unidades" id="unity">
+                <label for="angulo">Ángulo(Grados):</label>
+                <input type="text" class="data1" name="angle" id="angulo" onchange="correct(this.id, this.value)" step="0.1">
+                <label for="velocidad">Velocidad Inicial(m/s):</label>
+                <input type="text" class="data1" name="velocity" id="velocidad" onchange="correct(this.id, this.value)" step="0.1">
+                <label for="gravedad">Gravedad(m/s^2):</label>
+                <input type="text" class="data1" name="gravity" id="gravedad" onchange="correct(this.id, this.value)" step="0.1">
+                <button class="boton1" id="button1" onclick="graficarTiroOblicuo()">CALCULAR</button>
+            </form>
+        </div>
+
+
+        <canvas id="myCanvas" class="tOblicuo" width="400px" height="300px">
+            Tu navegador no soporta el tag de HTML5 canvas.
+        </canvas>
+
+        <div class="result1" id="resultadoFinal">
+            <h4>Resultados:</h4>
+            <form class="resultados1">
+                <div>
+                    La altura máxima es: <span id="altmax">0</span> m
+                </div>
+                <div>
+                    El tiempo total de vuelo es: <span id="tiempovuelo">0</span> s
+                </div>
+                <div>
+                    La distancia recorrida es: <span id="distRecorrida">0</span> m
+                </div>
+            </form>
+        </div>
     </div>
-
-
-    <canvas id="myCanvas" class="tOblicuo" width="400px" height="200px">
-        Tu navegador no soporta el tag de HTML5 canvas.
-    </canvas>
-
-    <div class="result1" id="resultadoFinal">
-        <h4>Resultados:</h4>
-        <form class="resultados1">
-        <div>
-            La altura máxima es: <span id="altmax">0</span> m
-        </div>
-        <div>
-            El tiempo total de vuelo es: <span id="tiempovuelo">0</span> s
-        </div>
-        <div>
-            La distancia recorrida es: <span id="distRecorrida">0</span> m
-        </div>
-        </form>
-    </div><!--Con esta función, voy a obtener los resultados finales-->
 
     <div class="back1">
         <button onclick="location.href='index.html'">BACK TO MENU</button>
     </div>
-    <!--
-        <div class="images">
-            <img id="pelota" src="images/pelota.png" alt="Pelota de uso en Tiro Oblicuo">
-        </div>
-    -->
 
-        <div class="burbles">
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-        </div>
+    <div class="burbles">
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+    </div>
 
-    </header>
-    </body>
-    </html>
+</header>
+</body>
+</html>
