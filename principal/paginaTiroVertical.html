@@ -24,13 +24,13 @@
     <div id="containerGraficoTirovertical">
         <div class="datos2">
             <h4>Ingrese los datos</h4>
-            <form>
+            <form name="unidades" id="unity">
                 <label for="altura">Altura Inicial(m):</label>
-                <input type="text" class="data2" name="height" id="altura" min="0" max="100" placeholder="Máximo de 100m:" step="0.1">
+                <input type="text" class="data2" name="height" id="altura" placeholder="Minimo de 0m y Máximo de 10m:" onchange="correct(this.id, this.value)" step="0.1">
                 <label for="velocidad">Velocidad Inicial(m/s):</label>
-                <input type="text" class="data2" name="velocity" id="velocidad" min="-100" max="100" placeholder="Máximo 100m y Mínimo -100m:" step="0.1">
+                <input type="text" class="data2" name="velocity" id="velocidad"  placeholder="Máximo 50 m/s y Mínimo 0 m/s:" onchange="correct(this.id, this.value)" step="0.1">
                 <label for="gravedad">Gravedad:</label>
-                <input type="text" class="data2" name="gravity" id="gravedad" min="0" max="100" placeholder="Máximo de 100m/s^2:" step="0.1">
+                <input type="text" class="data2" name="gravity" id="gravedad"  placeholder="Minimo de 1 m/s^2 y Máximo de 20m/s^2:" onchange="correct(this.id, this.value)" step="0.1">
                 <label for="button2">Enviar Información:</label>
                 <button type="button" onclick="graficarTiroVertical()" class="boton1" id="button2">Calcular </button>
             </form>
@@ -61,7 +61,7 @@
     <div class="back2">
         <button onclick="location.href='index.html'">BACK TO MENU</button>
     </div>
-<!--
+
     <div class="burbles">
         <div class="burbuja"></div>
         <div class="burbuja"></div>
@@ -74,7 +74,6 @@
         <div class="burbuja"></div>
         <div class="burbuja"></div>
     </div>
--->
 </header>
 </body>
 </html>

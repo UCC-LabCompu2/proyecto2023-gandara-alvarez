@@ -11,7 +11,41 @@
  * Funcion que se encarga de crear el canvas ya cuadriculado , con sus
  * ejes principales
  */
+let correct = (id, valor) => {
+    if(valor.includes(",")){
+        valor = valor.replace(",",".");
+    }
+    //Creación de variables
+    let altura,vel, grav, formulario;
+    altura = document.getElementById("altura").value;
+    vel = document.getElementById("velocidad").value;
+    grav = document.getElementById("gravedad").value;
+    formulario = document.getElementById("unity");
+    if(isNaN(valor)){
+        alert("Se ingreso un valor invalido en "+ id);
+        formulario.reset(); //funcion que resetea el formulario si es que se ingreso un valor que no es un numero
 
+    }else if (id === "velocidad"){
+        document.getElementById("velocidad").value = valor;
+        if (vel<0 || vel>=50){
+            alert("Velocidad mal ingresado, vuelva a ingresar");
+            formulario.reset();
+        }
+    }else if (id==="gravedad"){
+        document.getElementById("gravedad").value = valor;
+        if (grav<1 || grav>=20){
+            alert("Gravedad mal ingresado, vuelva a ingresar");
+            formulario.reset();
+        }
+    }else if (id==="altura"){
+        document.getElementById("altura").value = valor;
+        if (altura<0 || altura>10){
+            alert("Altura mal ingresado, vuelva a ingresar");
+            formulario.reset();
+        }
+    }
+    calcular(altura,vel,grav);
+}
 
 function graficarTiroVertical() {
     const canvas = document.getElementById("myCanvas");
