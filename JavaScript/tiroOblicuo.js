@@ -71,8 +71,8 @@ let graficarTiroOblicuo = () => {
     ctx.strokeStyle = "black";
 
     //Ejes
-   const origenX = anchomax/2; //centro horizontal
-   const origenY = alturaMax/2; //centro vertical
+    const origenX = anchomax/2; //centro horizontal
+    const origenY = alturaMax/2; //centro vertical
 
     //EjeX
     ctx.beginPath();
