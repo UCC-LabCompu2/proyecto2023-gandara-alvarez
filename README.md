@@ -21,4 +21,4 @@ respectivos tiros
 
 ### Link de paginas
 
-Si quiere ver el proyecto, aqui tiene la [pagina principal](principal/index.html) 
+Si quiere ver el proyecto, aqui tiene la [pagina principal](./principal/index.html) 
