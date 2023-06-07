@@ -61,29 +61,29 @@ let graficarTiroOblicuo = () => {
     const escalaY = 10;
 
     //calculos
-    let time= Number((2*vel*Math.sin(angRad))/grav).toFixed(2); //TiempoVuelo
-    let ymax = Number(((Math.pow(vel,2))*Math.pow(Math.sin(angRad),2))/(2*grav)); //AlturaMaxima
-    let xmax = Number((Math.pow(vel,2)*Math.sin(2*angRad))/grav); //AlcanceMaximo
+    let time=(2 * vel *Math.sin(angRad))/grav; //TiempoVuelo
+    let ymax = ((Math.pow(vel,2))* Math.pow(Math.sin(angRad),2))/(2* grav); //AlturaMaxima
+    let xmax = (Math.pow(vel,2)* Math.sin(2* angRad))/grav; //AlcanceMaximo
 
     //Canvas
     ctx.clearRect(0, 0, anchomax, alturaMax);
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 5;
     ctx.strokeStyle = "black";
 
     //Ejes
-   const origenX = 0;
-   const origenY = alturaMax;
+   const origenX = anchomax/2; //centro horizontal
+   const origenY = alturaMax/2; //centro vertical
 
     //EjeX
     ctx.beginPath();
-    ctx.moveTo(origenX,origenY);
+    ctx.moveTo(0,origenY);
     ctx.lineTo(anchomax,origenY);
     ctx.stroke();
 
     //EjeY
     ctx.beginPath();
     ctx.moveTo(origenX,0);
-    ctx.lineTo(origenX,origenY);
+    ctx.lineTo(origenX,alturaMax);
     ctx.stroke();
 
     //Trayectoria
