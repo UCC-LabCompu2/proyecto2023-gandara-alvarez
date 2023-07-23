@@ -9,32 +9,30 @@ let correct = (id, valor) => {
         valor = valor.replace(",",".");
     }
     //Creación de variables
-    let altura,vel, grav, formulario;
+    let altura,altura2, vel, vel2, grav;
     altura = document.getElementById("altura").value;
+    altura2 = document.getElementById("altura");
     vel = document.getElementById("velocidad").value;
+    vel2 = document.getElementById("velocidad");
     grav = document.getElementById("gravedad").value;
-    formulario = document.getElementById("unity");
-    if(isNaN(valor)){ //funcion que verifica si valor es un numero o no
-        alert("Se ingreso un valor invalido en "+ id);
-        formulario.reset(); //funcion que resetea el formulario si es que se ingreso un valor que no es un numero
-
-    }else if (id === "velocidad"){
+    grav2 = document.getElementById("gravedad");
+     if (id === "velocidad"){
         document.getElementById("velocidad").value = valor;
-        if (vel<0 || vel>50){
+        if (vel<0 || vel>50 || isNaN(vel)){
             alert("Velocidad mal ingresado, vuelva a ingresar");
-            formulario.reset();
+            vel2.value = '';
         }
-    }else if (id==="gravedad"){
+    }else if (id ==="gravedad"){
         document.getElementById("gravedad").value = valor;
-        if (grav<1 || grav>20){
+        if (grav<1 || grav>20 || isNaN(grav) ){
             alert("Gravedad mal ingresado, vuelva a ingresar");
-            formulario.reset();
+            grav2.value = '';
         }
     }else if (id==="altura"){
         document.getElementById("altura").value = valor;
-        if (altura<0 || altura>10){
+        if (altura<0 || altura>10 || isNaN(altura) ){
             alert("Altura mal ingresado, vuelva a ingresar");
-            formulario.reset();
+            altura2.value = '';
         }
     }
 }
@@ -75,18 +73,21 @@ function graficarTiroVertical() {
 
     // Eje x
     ctx.beginPath();
+    ctx.strokeStyle = "green";
     ctx.moveTo(0, origenY);
     ctx.lineTo(canvasWidth, origenY);
     ctx.stroke();
 
     // Eje y
     ctx.beginPath();
+    ctx.strokeStyle = "green";
     ctx.moveTo(origenX, 0);
     ctx.lineTo(origenX, canvasHeight);
     ctx.stroke();
 
     // Dibujar trayectoria
     ctx.beginPath();
+    ctx.strokeStyle = "red";
     ctx.moveTo(origenX, origenY - alturaInicial * escalaY);
 
     let t = 0;
@@ -113,8 +114,14 @@ function graficarTiroVertical() {
  * @param {number} tiempo - tiempo que transcurre entre la altura inicial y la altura maxima alcanzada, tiempo total de vuelo
  */
 function mostrarResultados(alturaMaxima, tiempo) {
-    document.getElementById("distancia").textContent = alturaMaxima.toFixed(2);
-    document.getElementById("tiempo").textContent = tiempo.toFixed(2);
+    let formulario = document.getElementById("unity");
+    if (alturaMaxima < 0 || tiempo < 0) {
+        alert("Con los datos que usted ingreso,los resultados dan valores improbables, por favor cambie los datos");
+        formulario.reset()
+    }else{
+        document.getElementById("distancia").textContent = alturaMaxima.toFixed(2);
+        document.getElementById("tiempo").textContent = tiempo.toFixed(2);
+    }
 }
 
 

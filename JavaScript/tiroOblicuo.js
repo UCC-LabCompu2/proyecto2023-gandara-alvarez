@@ -9,33 +9,37 @@ let correct = (id, valor) => {
         valor = valor.replace(",",".");
     }
     //Creación de variables
-    let ang, vel, grav, formulario;
+    let ang, ang2, vel,vel2,grav,grav2, formulario;
     ang = document.getElementById("angulo").value;
+    ang2 = document.getElementById("angulo");
     vel = document.getElementById("velocidad").value;
+    vel2 = document.getElementById("velocidad");
     grav = document.getElementById("gravedad").value;
+    grav2 = document.getElementById("gravedad");
     formulario = document.getElementById("unity");
-    if(isNaN(valor)){ //funcion que verifica si valor es un numero o no
-        alert("Se ingreso un valor invalido en "+ id);
-        formulario.reset(); //funcion que resetea el formulario si es que se ingreso un valor que no es un numero
-
-    } else if (id==="angulo"){
+//    if(isNaN(valor)){ //funcion que verifica si valor es un numero o no
+ //       alert("Se ingreso un valor invalido en "+ id);
+   //     formulario.reset(); //funcion que resetea el formulario si es que se ingreso un valor que no es un numero
+//
+  //  }
+    if (id==="angulo"){
         document.getElementById("angulo").value = valor;
-        if (ang<0 || ang>360){
+        if (ang<0 || ang>360 || isNaN(ang)){
             alert("Ángulo mal ingresado, vuelva a ingresar");
-            formulario.reset();
+            ang2.value = '';
         }
 
     }else if (id==="velocidad"){
         document.getElementById("velocidad").value = valor;
-        if (vel<0 || vel>50){
+        if (vel<0 || vel>50 || isNaN(vel)){
             alert("Velocidad mal ingresado, vuelva a ingresar");
-            formulario.reset();
+            vel2.value = '';
         }
     }else if (id==="gravedad"){
         document.getElementById("gravedad").value = valor;
-        if (grav<1 || grav>20){
+        if (grav<1 || grav>20 || isNaN(grav)){
             alert("Gravedad mal ingresado, vuelva a ingresar");
-            formulario.reset();
+            grav2.value = '';
         }
     }
 }
@@ -76,18 +80,21 @@ let graficarTiroOblicuo = () => {
 
     //EjeX
     ctx.beginPath();
+    ctx.strokeStyle = "green";
     ctx.moveTo(0,origenY);
     ctx.lineTo(anchomax,origenY);
     ctx.stroke();
 
     //EjeY
     ctx.beginPath();
+    ctx.strokeStyle  = "green";
     ctx.moveTo(origenX,0);
     ctx.lineTo(origenX,alturaMax);
     ctx.stroke();
 
     //Trayectoria
     ctx.beginPath();
+    ctx.strokeStyle = "red";
     ctx.moveTo(origenX,origenY);
 
     let i = 0;
@@ -114,7 +121,14 @@ let graficarTiroOblicuo = () => {
  * @param {number} alcMax - alcance maximo calculado en la funcion graficarTiroOblicuo()
  */
 let showResult = (altMax,tiempoVuelo,alcMax) => {
-    document.getElementById("altmax").textContent = altMax.toFixed(2);
-    document.getElementById("tiempovuelo").textContent = tiempoVuelo.toFixed(2);
-    document.getElementById("distRecorrida").textContent = alcMax.toFixed(2);
+    let formulario = document.getElementById("unity");
+    if (altMax < 0 || tiempoVuelo < 0 || alcMax < 0){
+        alert("Con los datos que usted ingreso, los calculos dan valores improbables, por favor cambie los datos");
+        formulario.reset();
+
+    }else{
+        document.getElementById("altmax").textContent = altMax.toFixed(2);
+        document.getElementById("tiempovuelo").textContent = tiempoVuelo.toFixed(2);
+        document.getElementById("distRecorrida").textContent = alcMax.toFixed(2);
+    }
 }
