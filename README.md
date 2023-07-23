@@ -21,4 +21,4 @@ respectivos tiros
 
 ### Link de paginas
 
-Si quiere ver el proyecto, aqui tiene la [pagina principal](./principal/index.html) 
+Si quiere ver el proyecto, aqui tiene la [pagina principal](https://ucc-labcompu2.github.io/proyecto2023-gandara-alvarez/principal/index.html) 
