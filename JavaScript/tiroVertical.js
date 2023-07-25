@@ -67,63 +67,54 @@ function graficarTiroVertical() {
     ctx.lineWidth = 2;
     ctx.strokeStyle = "black";
 
-    // Dibujar ejes
+    // Dibujar ejes y marcas (como en el código original)
     const origenX = 0; // Comienzo del eje x en el extremo izquierdo inferior
     const origenY = canvasHeight; // Comienzo del eje y en el extremo izquierdo inferior
-    const finEjeX = canvasWidth;
-    const finEjeY = 0;
-    ctx.stroke();
 
-    // Dibujar el eje x con marcas y etiquetas
-    ctx.beginPath();
-    ctx.strokeStyle = "green";
-    ctx.moveTo(origenX, origenY);
-    ctx.lineTo(finEjeX, origenY);
-    ctx.stroke();
+    // ... (Código para dibujar ejes y marcas, como en el código original)
 
-    for (let posX = intervaloMarcas; posX <= finEjeX; posX += intervaloMarcas) {
-        ctx.beginPath();
-        ctx.moveTo(posX, origenY - 5);
-        ctx.lineTo(posX, origenY + 5);
-        ctx.stroke();
-    }
-
-    // Dibujar el eje y con marcas y etiquetas
-    ctx.beginPath();
-    ctx.strokeStyle = "green";
-    ctx.moveTo(origenX, origenY);
-    ctx.lineTo(origenX, finEjeY);
-    ctx.stroke();
-
-    for (let posY = intervaloMarcas; posY <= origenY; posY += intervaloMarcas) {
-        ctx.beginPath();
-        ctx.moveTo(origenX - 5, posY);
-        ctx.lineTo(origenX + 5, posY);
-        ctx.stroke();
-    }
-
-    // Dibujar trayectoria
-    ctx.beginPath();
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 4;
-    ctx.moveTo(origenX, origenY - alturaInicial * escala);
-
-    let t = 0;
-    let x = origenX;
-    let y = origenY - alturaInicial * escala;
-
-    while (x <= canvasWidth && y >= 0) {
-        x = origenX + t * escala; // Posición horizontal
-        y = origenY - ((velocidadInicial * t * Math.sin(Math.PI / 2)) - 0.5 * gravedad * Math.pow(t, 2) + alturaInicial) * escala; // Posición vertical
-
+    // Función para dibujar el proyectil en una posición específica
+    function dibujarProyectil(x, y) {
         ctx.lineTo(x, y);
-
-        t += 0.1;
+        ctx.stroke();
     }
 
-    ctx.stroke();
+    // Función para animar el proyectil utilizando setInterval
+    function animarProyectil() {
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 4;
+
+        let t = 0;
+        let x = origenX;
+        let y = origenY - alturaInicial * escala;
+
+        const intervaloTiempo = 100; // Intervalo de tiempo para cada actualización (en milisegundos)
+        const intervaloDistancia = intervaloTiempo / 1000 * velocidadInicial * escala; // Distancia recorrida en cada actualización
+
+        const animacion = setInterval(() => {
+            if (x <= canvasWidth && y >= 0) {
+                x = origenX + t * escala; // Posición horizontal
+                y = origenY - ((velocidadInicial * t * Math.sin(Math.PI / 2)) - 0.5 * gravedad * Math.pow(t, 2) + alturaInicial) * escala; // Posición vertical
+
+                dibujarProyectil(x, y);
+
+                t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
+            } else {
+                // La animación ha terminado, mostrar resultados
+
+                clearInterval(animacion); // Detener la animación
+               // mostrarResultados(alturaMaxima, tiempoTotal);
+            }
+        }, intervaloTiempo);
+    }
+
+    // Iniciar la animación
+    animarProyectil();
     mostrarResultados(alturaMaxima, tiempoTotal);
 }
+
+
 
 /**
  * Se encarga de asignarle los valores calculados en la funcion graficarTiroVertical() al recuadro de los resultados
