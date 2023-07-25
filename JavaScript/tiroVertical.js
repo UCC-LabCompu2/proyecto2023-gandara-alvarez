@@ -64,25 +64,25 @@ function graficarTiroVertical() {
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 4;
     ctx.strokeStyle = "red";
 
     // Dibujar ejes
-    const origenX = canvasWidth / 2;
-    const origenY = canvasHeight / 2;
+    const origenX = 0; // Comienzo del eje x en el extremo izquierdo inferior
+    const origenY = canvasHeight; // Comienzo del eje y en el extremo izquierdo inferior
 
-    // Eje x
+    // Dibujar el eje x
     ctx.beginPath();
     ctx.strokeStyle = "green";
-    ctx.moveTo(0, origenY);
+    ctx.moveTo(origenX, origenY);
     ctx.lineTo(canvasWidth, origenY);
     ctx.stroke();
 
-    // Eje y
+    // Dibujar el eje y
     ctx.beginPath();
     ctx.strokeStyle = "green";
-    ctx.moveTo(origenX, 0);
-    ctx.lineTo(origenX, canvasHeight);
+    ctx.moveTo(origenX, origenY);
+    ctx.lineTo(origenX, 0);
     ctx.stroke();
 
     // Dibujar trayectoria
@@ -94,7 +94,7 @@ function graficarTiroVertical() {
     let x = origenX;
     let y = origenY - alturaInicial * escalaY;
 
-    while (y <= origenY) {
+    while (x <= canvasWidth && y >= 0) {
         x = origenX + t * escalaX; // Posición horizontal
         y = origenY - ((velocidadInicial * t * Math.sin(Math.PI / 2)) - 0.5 * gravedad * Math.pow(t, 2) + alturaInicial) * escalaY; // Posición vertical
 
