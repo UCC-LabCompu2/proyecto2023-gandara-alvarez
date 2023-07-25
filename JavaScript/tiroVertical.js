@@ -5,9 +5,6 @@
  * @param {number} valor - Valor ingresado por el usuario
  */
 let correct = (id, valor) => {
-    if(valor.includes(",")){
-        valor = valor.replace(",",".");
-    }
     //Creación de variables
     let altura,altura2, vel, vel2, grav, grav2;
     altura = document.getElementById("altura").value;
@@ -75,8 +72,8 @@ function graficarTiroVertical() {
 
     // ... (Código para dibujar ejes y marcas, como en el código original)
     // Eje X con marcas y etiquetas
-    ctx.beginPath();
-    ctx.strokeStyle = "green";
+    //ctx.beginPath();
+    ctx.strokeStyle = "yellow";
     ctx.moveTo(origenX, origenY);
     ctx.lineTo(finEjeX, origenY);
     ctx.stroke();
@@ -90,7 +87,7 @@ function graficarTiroVertical() {
 
     // Eje Y con marcas y etiquetas
     ctx.beginPath();
-    ctx.strokeStyle = "green";
+    ctx.strokeStyle = "orange";
     ctx.moveTo(origenX, origenY);
     ctx.lineTo(origenX, finEjeY);
     ctx.stroke();
@@ -122,7 +119,6 @@ function graficarTiroVertical() {
         let y = origenY - alturaInicial * escala;
 
         const intervaloTiempo = 100; // Intervalo de tiempo para cada actualización (en milisegundos)
-        const intervaloDistancia = intervaloTiempo / 1000 * velocidadInicial * escala; // Distancia recorrida en cada actualización
 
         const animacion = setInterval(() => {
             if (x <= canvasWidth && y >= 0) {
