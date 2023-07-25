@@ -5,9 +5,6 @@
  * @param {number} valor - Valor ingresado por el usuario
  */
 let correct = (id, valor) => {
-    if(valor.includes(",")) {
-        valor = valor.replace(",",".");
-    }
     //Creación de variables
     let ang, ang2, vel,vel2,grav,grav2;
     ang = document.getElementById("angulo").value;
@@ -76,31 +73,8 @@ let graficarTiroOblicuo = () => {
     const finEjeX = anchomax;
     const finEjeY = 0;
 
-    //Trayectoria
-    ctx.beginPath();
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 4;
-
-    let i = 0;
-    let x = 0;
-    let y = 0;
-
-    while (i <= time){
-        x = vel * Math.cos(angRad) * i * escala; //Posición horizontal
-        y = alturaMax - (vel * Math.sin(angRad) * i - (0.5 * grav * Math.pow(i,2))) * escala; //Posición vertical
-
-        if(x > anchomax || y<0){
-            break; //Si la posición horizontal supera el ancho máximo del canvas, se sale del bucle y tmb si supera la altura
-        }
-
-        ctx.lineTo(x,y);
-
-        i += 0.1;
-    }
-
-    ctx.stroke();
-
-    // Eje X con marcas y etiquetas
+    // Dibujar los ejes
+    // Eje X con marcas
     ctx.beginPath();
     ctx.strokeStyle = "green";
     ctx.moveTo(origenX, origenY);
@@ -114,7 +88,7 @@ let graficarTiroOblicuo = () => {
         ctx.stroke();
     }
 
-    // Eje Y con marcas y etiquetas
+    // Eje Y con marcas
     ctx.beginPath();
     ctx.strokeStyle = "green";
     ctx.moveTo(origenX, origenY);
@@ -127,7 +101,43 @@ let graficarTiroOblicuo = () => {
         ctx.lineTo(origenX + 5, posY);
         ctx.stroke();
     }
-            showResult(ymax, time, xmax);
+
+    // Función para dibujar el proyectil en una posición específica
+    function dibujarProyectil(x, y) {
+
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.strokeStyle = "red";
+    }
+    // Función para animar el proyectil
+    function animarProyectil() {
+        ctx.beginPath();
+        ctx.lineWidth = 4;
+
+        let t = 0;
+        let x = origenX;
+        let y = origenY;
+
+        const intervaloTiempo = 100; // Intervalo de tiempo para cada actualización (en milisegundos)
+
+        const animate = setInterval(() => {
+            if (t <= time) {
+                x = origenX + vel * Math.cos(angRad) * t * escala; // Posición horizontal
+                y = origenY - ((vel * Math.sin(angRad) * t) - (0.5 * grav * Math.pow(t, 2))) * escala; // Posición vertical
+
+                dibujarProyectil(x, y);
+
+                t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
+            } else {
+                // La animación ha terminado, mostrar resultados si es necesario
+                clearInterval(animate); // Detener la animación
+            }
+        }, intervaloTiempo);
+    }
+    // Iniciar la animación
+    animarProyectil();
+
+    showResult(ymax, time, xmax);
 }
 
 /**

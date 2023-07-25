@@ -42,6 +42,8 @@ let correct = (id, valor) => {
 function graficarTiroVertical() {
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
 
     // Obtener los valores de los parámetros ingresados por el usuario
     const fuerza = Number(document.getElementById("velocidad").value);
@@ -58,21 +60,18 @@ function graficarTiroVertical() {
     const alturaMaxima = (Math.pow(velocidadInicial, 2) / (2 * gravedad)) + alturaInicial; // Altura máxima alcanzada
 
     // Configuración del lienzo
-    const canvasWidth = canvas.width;
-    const canvasHeight = canvas.height;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.lineWidth = 2;
     ctx.strokeStyle = "black";
 
-    // Dibujar ejes y marcas (como en el código original)
+    // Dibujar ejes y marcas
     const origenX = 0; // Comienzo del eje x en el extremo izquierdo inferior
     const origenY = canvasHeight; // Comienzo del eje y en el extremo izquierdo inferior
     const finEjeX = canvasWidth;
     const finEjeY = 0;
 
-    // ... (Código para dibujar ejes y marcas, como en el código original)
-    // Eje X con marcas y etiquetas
-    //ctx.beginPath();
+    // Eje X con marcas
+    ctx.beginPath();
     ctx.strokeStyle = "yellow";
     ctx.moveTo(origenX, origenY);
     ctx.lineTo(finEjeX, origenY);
@@ -85,7 +84,7 @@ function graficarTiroVertical() {
         ctx.stroke();
     }
 
-    // Eje Y con marcas y etiquetas
+    // Eje Y con marcas
     ctx.beginPath();
     ctx.strokeStyle = "orange";
     ctx.moveTo(origenX, origenY);
