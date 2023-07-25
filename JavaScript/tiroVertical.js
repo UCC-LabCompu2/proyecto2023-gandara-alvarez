@@ -70,19 +70,51 @@ function graficarTiroVertical() {
     // Dibujar ejes y marcas (como en el código original)
     const origenX = 0; // Comienzo del eje x en el extremo izquierdo inferior
     const origenY = canvasHeight; // Comienzo del eje y en el extremo izquierdo inferior
+    const finEjeX = canvasWidth;
+    const finEjeY = 0;
 
     // ... (Código para dibujar ejes y marcas, como en el código original)
+    // Eje X con marcas y etiquetas
+    ctx.beginPath();
+    ctx.strokeStyle = "green";
+    ctx.moveTo(origenX, origenY);
+    ctx.lineTo(finEjeX, origenY);
+    ctx.stroke();
+
+    for (let posX = intervaloMarcas; posX <= finEjeX; posX += intervaloMarcas) {
+        ctx.beginPath();
+        ctx.moveTo(posX, origenY - 5);
+        ctx.lineTo(posX, origenY + 5);
+        ctx.stroke();
+    }
+
+    // Eje Y con marcas y etiquetas
+    ctx.beginPath();
+    ctx.strokeStyle = "green";
+    ctx.moveTo(origenX, origenY);
+    ctx.lineTo(origenX, finEjeY);
+    ctx.stroke();
+
+    for (let posY = intervaloMarcas; posY <= origenY; posY += intervaloMarcas) {
+        ctx.beginPath();
+        ctx.moveTo(origenX - 5, posY);
+        ctx.lineTo(origenX + 5, posY);
+        ctx.stroke();
+    }
+
 
     // Función para dibujar el proyectil en una posición específica
     function dibujarProyectil(x, y) {
+
         ctx.lineTo(x, y);
         ctx.stroke();
+        ctx.strokeStyle = "red";
     }
 
     // Función para animar el proyectil utilizando setInterval
     function animarProyectil() {
         ctx.beginPath();
-        ctx.strokeStyle = "red";
+       // ctx.strokeStyle = "red";
         ctx.lineWidth = 4;
 
         let t = 0;
@@ -102,11 +134,10 @@ function graficarTiroVertical() {
                 t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
             } else {
                 // La animación ha terminado, mostrar resultados
-
                 clearInterval(animacion); // Detener la animación
-               // mostrarResultados(alturaMaxima, tiempoTotal);
             }
         }, intervaloTiempo);
+
     }
 
     // Iniciar la animación
