@@ -43,6 +43,11 @@ let correct = (id, valor) => {
 let graficarTiroOblicuo = () => {
     let canvas = document.getElementById("myCanvas");
     let ctx = canvas.getContext("2d");
+
+
+    // Limpiar el canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     const alturaMax = canvas.height;
     const anchomax = canvas.width;
 
@@ -54,7 +59,7 @@ let graficarTiroOblicuo = () => {
     const angRad = (ang * Math.PI) / 180; //pase de grados a radianes para utilizar correctamente las funciones Math
 
     //constantes
-    const escala = 10; // Escala para ajustar el tamaño de la gráfica y los ejes
+    const escala = 5; // Escala para ajustar el tamaño de la gráfica y los ejes
     const intervaloMarcas = 50; // Intervalo entre marcas en los ejes
 
     //calculos
@@ -74,7 +79,7 @@ let graficarTiroOblicuo = () => {
     const finEjeY = 0;
 
     // Dibujar los ejes
-    // Eje X con marcas
+// Eje X con marcas
     ctx.beginPath();
     ctx.strokeStyle = "green";
     ctx.moveTo(origenX, origenY);
@@ -86,9 +91,13 @@ let graficarTiroOblicuo = () => {
         ctx.moveTo(posX, origenY - 5);
         ctx.lineTo(posX, origenY + 5);
         ctx.stroke();
+
+        // Añadir el valor de la marca
+        ctx.font = '12px Arial';
+        ctx.fillText(posX / escala, posX, origenY - 15); // Mostrar el valor de la marca encima del eje X
     }
 
-    // Eje Y con marcas
+// Eje Y con marcas
     ctx.beginPath();
     ctx.strokeStyle = "green";
     ctx.moveTo(origenX, origenY);
@@ -100,8 +109,11 @@ let graficarTiroOblicuo = () => {
         ctx.moveTo(origenX - 5, posY);
         ctx.lineTo(origenX + 5, posY);
         ctx.stroke();
-    }
 
+        // Añadir el valor de la marca
+        ctx.font = '12px Arial';
+        ctx.fillText((origenY - posY) / escala, origenX + 15, posY); // Mostrar el valor de la marca a la derecha del eje Y
+    }
     // Función para dibujar el proyectil en una posición específica
     function dibujarProyectil(x, y) {
 

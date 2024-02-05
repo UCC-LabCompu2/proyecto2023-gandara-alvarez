@@ -77,11 +77,16 @@ function graficarTiroVertical() {
     ctx.lineTo(finEjeX, origenY);
     ctx.stroke();
 
-    for (let posX = intervaloMarcas; posX <= finEjeX; posX += intervaloMarcas) {
+// Dibujar marcas en el eje X
+    for (let posX = 0; posX <= finEjeX; posX += 50) { // Incrementar en 50 unidades
         ctx.beginPath();
         ctx.moveTo(posX, origenY - 5);
         ctx.lineTo(posX, origenY + 5);
         ctx.stroke();
+
+        // Añadir el valor de la marca
+        ctx.font = '12px Arial';
+        ctx.fillText(posX / escala, posX, origenY - 15); // Mostrar el valor de la marca encima del eje X
     }
 
     // Eje Y con marcas
@@ -91,11 +96,16 @@ function graficarTiroVertical() {
     ctx.lineTo(origenX, finEjeY);
     ctx.stroke();
 
-    for (let posY = intervaloMarcas; posY <= origenY; posY += intervaloMarcas) {
+    // Dibujar marcas en el eje Y
+    for (let posY = origenY; posY >= finEjeY; posY -= 50) { // Decrementar en 50 unidades
         ctx.beginPath();
         ctx.moveTo(origenX - 5, posY);
         ctx.lineTo(origenX + 5, posY);
         ctx.stroke();
+
+        // Añadir el valor de la marca
+        ctx.font = '12px Arial';
+        ctx.fillText((origenY - posY) / escala, origenX + 15, posY); // Mostrar el valor de la marca a la derecha del eje Y
     }
 
 
@@ -108,9 +118,9 @@ function graficarTiroVertical() {
     }
 
     // Función para animar el proyectil utilizando setInterval
+    // Función para animar el proyectil utilizando setInterval
     function animarProyectil() {
         ctx.beginPath();
-       // ctx.strokeStyle = "red";
         ctx.lineWidth = 4;
 
         let t = 0;
@@ -127,12 +137,16 @@ function graficarTiroVertical() {
                 dibujarProyectil(x, y);
 
                 t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
+
+                // Si el proyectil alcanza el eje x, detener la animación
+                if (x >= canvasWidth) {
+                    clearInterval(animacion);
+                }
             } else {
                 // La animación ha terminado, mostrar resultados
                 clearInterval(animacion); // Detener la animación
             }
         }, intervaloTiempo);
-
     }
 
     // Iniciar la animación
