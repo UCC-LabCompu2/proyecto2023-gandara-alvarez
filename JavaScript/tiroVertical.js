@@ -153,7 +153,7 @@ function graficarTiroVertical() {
                 t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
 
                 // Si el proyectil alcanza el eje x, detener la animación
-                if (y >= canvasHeight) {
+                if (y >= canvasHeight && x != origenX) {
                     clearInterval(animacion);
                 }
             } else {

@@ -140,6 +140,7 @@ let graficarTiroOblicuo = () => {
                 dibujarProyectil(x, y);
 
                 t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
+
             } else {
                 // La animación ha terminado, mostrar resultados si es necesario
                 clearInterval(animate); // Detener la animación
