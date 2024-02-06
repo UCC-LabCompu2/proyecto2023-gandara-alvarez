@@ -4,32 +4,48 @@
  * @param {string} id - Id del input del formulario
  * @param {number} valor - Valor ingresado por el usuario
  */
-let correct = (id, valor) => {
-    //Creación de variables
-    let altura,altura2, vel, vel2, grav, grav2;
+function correct(id, valor) {
+    // Creación de variables
+    let altura, altura2, vel, vel2, grav, grav2;
+
+    // Obtener los valores de los campos de entrada
     altura = document.getElementById("altura").value;
     altura2 = document.getElementById("altura");
     vel = document.getElementById("velocidad").value;
     vel2 = document.getElementById("velocidad");
     grav = document.getElementById("gravedad").value;
     grav2 = document.getElementById("gravedad");
-     if (id === "velocidad"){
+
+    // Verificar si el id corresponde a la velocidad, gravedad o altura
+    if (id === "velocidad") {
+        // Actualizar el valor de la velocidad en el campo de entrada
         document.getElementById("velocidad").value = valor;
-        if (vel<0 || vel>50 || isNaN(vel)){
-            alert("Velocidad mal ingresado, vuelva a ingresar");
-            vel2.value = '';
+
+        // Verificar si la velocidad es un número entre 0 y 50
+        if (vel < 0 || vel > 50 || isNaN(vel)) {
+
+            alert("Velocidad mal ingresado, vuelva a ingresar");// Mostrar un mensaje de error si la velocidad es incorrecta
+            vel2.value = '';// Limpiar el campo de entrada de la velocidad
         }
-    }else if (id ==="gravedad"){
+    } else if (id === "gravedad") {
+        // Actualizar el valor de la gravedad en el campo de entrada
         document.getElementById("gravedad").value = valor;
-        if (grav<1 || grav>20 || isNaN(grav) ){
-            alert("Gravedad mal ingresado, vuelva a ingresar");
-            grav2.value = '';
+
+        // Verificar si la gravedad es un número entre 1 y 20
+        if (grav < 1 || grav > 20 || isNaN(grav)) {
+
+            alert("Gravedad mal ingresado, vuelva a ingresar");// Mostrar un mensaje de error si la gravedad es incorrecta
+            grav2.value = '';// Limpiar el campo de entrada de la gravedad
+
         }
-    }else if (id==="altura"){
+    } else if (id === "altura") {
+        // Actualizar el valor de la altura en el campo de entrada
         document.getElementById("altura").value = valor;
-        if (altura<0 || altura>10 || isNaN(altura) ){
-            alert("Altura mal ingresado, vuelva a ingresar");
-            altura2.value = '';
+
+        // Verificar si la altura es un número entre 0 y 10
+        if (altura < 0 || altura > 10 || isNaN(altura)) {
+            alert("Altura mal ingresado, vuelva a ingresar");// Mostrar un mensaje de error si la altura es incorrecta
+            altura2.value = '';// Limpiar el campo de entrada de la altura
         }
     }
 }
@@ -111,13 +127,11 @@ function graficarTiroVertical() {
 
     // Función para dibujar el proyectil en una posición específica
     function dibujarProyectil(x, y) {
-
         ctx.lineTo(x, y);
         ctx.stroke();
         ctx.strokeStyle = "red";
     }
 
-    // Función para animar el proyectil utilizando setInterval
     // Función para animar el proyectil utilizando setInterval
     function animarProyectil() {
         ctx.beginPath();
@@ -127,7 +141,7 @@ function graficarTiroVertical() {
         let x = origenX;
         let y = origenY - alturaInicial * escala;
 
-        const intervaloTiempo = 100; // Intervalo de tiempo para cada actualización (en milisegundos)
+        const intervaloTiempo = 10; // Intervalo de tiempo para cada actualización (en milisegundos)
 
         const animacion = setInterval(() => {
             if (x <= canvasWidth && y >= 0) {
@@ -139,7 +153,7 @@ function graficarTiroVertical() {
                 t += intervaloTiempo / 1000; // Convertir el tiempo a segundos
 
                 // Si el proyectil alcanza el eje x, detener la animación
-                if (x >= canvasWidth) {
+                if (y >= canvasHeight) {
                     clearInterval(animacion);
                 }
             } else {
@@ -152,6 +166,7 @@ function graficarTiroVertical() {
     // Iniciar la animación
     animarProyectil();
     mostrarResultados(alturaMaxima, tiempoTotal);
+
 }
 
 
@@ -172,5 +187,6 @@ function mostrarResultados(alturaMaxima, tiempo) {
         document.getElementById("tiempo").textContent = tiempo.toFixed(2);
     }
 }
+
 
 
